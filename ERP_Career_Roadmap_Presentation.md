@@ -288,15 +288,19 @@ Use this section to present directly to executive leadership (CFO, VP Technology
 
 ---
 
-## Part 7: Interactive Presentation Access
+## Part 7: Presentation Files & Download Access
 
-The interactive, dark-mode executive presentation application is available at:  
-👉 `file:///c:/Users/Vikram.singh/Downloads/New folder (5)/ERP_Roadmap_Presentation.html`
+1. **Executive PDF Slide Deck (Pre-Generated 14-Page Executive Document):**  
+   👉 [ERP_Strategic_Roadmap_Presentation.pdf](file:///c:/Users/Vikram.singh/Downloads/New%20folder%20%285%29/ERP_Strategic_Roadmap_Presentation.pdf)  
+   - Exactly 14 slides formatted 1-to-1 on 14 A4 landscape pages.
+   - Vector-crisp typography, high-contrast dark theme, and formatted financial scorecards.
+   - Ready to attach to leadership emails or present directly.
 
-**Interactive Presentation Features:**
-- **Slide Switcher Dropdown:** Instant jump to any of the 14 slides from the header navigation.
-- **Quick-Jump Pill Bar:** 1-click access to all 14 slides directly beneath the header.
-- **Floating Edge Switchers:** Screen-edge `‹` and `›` arrow buttons for effortless navigation.
-- **Rich Hover Intel:** Hovering over any deliverable card instantly reveals Key Stakeholders, Tech Enablers, and Key KPIs.
-- **Interactive Deep-Dive Modals:** Click any task card for technical architecture and failure risk analysis.
-- **1-Click PDF Export:** Click "Print / PDF" to generate a polished executive slide deck.
+2. **Interactive Presentation Application (HTML Deck):**  
+   👉 [ERP_Roadmap_Presentation.html](file:///c:/Users/Vikram.singh/Downloads/New%20folder%20%285%29/ERP_Roadmap_Presentation.html)  
+   - **Direct PDF Download Button:** Click "Download PDF" in the header or on Slide 14 to instantly save the 14-page PDF document.
+   - **Print / Save as PDF Button:** Native print engine with automated `@media print` formatting for local or network printers.
+   - **Slide Switcher Dropdown & 14 Quick-Jump Chips:** Jump to any slide with one click.
+   - **Screen-Edge Floating Switchers:** Click `‹` and `›` on the screen margins to navigate smoothly.
+   - **Rich Hover Intel:** Hovering over any deliverable card reveals Key Stakeholders, Tech Enablers, and Key KPIs.
+   - **Interactive Deep-Dive Modals:** Click any task card for detailed technical architecture and risk mitigation plans.

@@ -741,27 +741,196 @@
     }
 
     /* Print styling */
-    @media print {
-      body {
+        @media print {
+      @page {
+        size: 297mm 210mm;
+        margin: 6mm 10mm;
+      }
+
+      *, *:before, *:after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        animation: none !important;
+        transition: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      html, body {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        display: block !important;
+        position: static !important;
         background: #0B0F19 !important;
         color: #F8FAFC !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 13px !important;
+        line-height: 1.35 !important;
       }
-      header.deck-header, .quick-jump-bar, .progress-line-container, .floating-nav-btn, .filter-bar {
+
+      header.deck-header,
+      .quick-jump-bar,
+      .progress-line-container,
+      .floating-nav-btn,
+      .filter-bar,
+      .modal-overlay,
+      .hover-intel-drawer,
+      #taskModal,
+      .btn,
+      button,
+      select {
         display: none !important;
+        visibility: hidden !important;
       }
+
       main.deck-viewport {
-        padding: 0;
-        margin: 0;
-        max-width: 100%;
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 0 !important;
       }
+
       .slide {
         display: flex !important;
-        page-break-after: always;
-        min-height: 100vh;
-        padding: 40px;
-        box-sizing: border-box;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        animation: none !important;
+        position: static !important;
+        width: 100% !important;
+        height: 196mm !important;
+        max-height: 196mm !important;
+        overflow: hidden !important;
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin: 0 !important;
+        padding: 4mm 0 !important;
+        box-sizing: border-box !important;
+      }
+
+      .slide:first-of-type,
+      #slide-1 {
+        page-break-before: auto !important;
+        break-before: auto !important;
+      }
+
+      .slide:last-of-type,
+      #slide-14 {
+        page-break-after: auto !important;
+        break-after: auto !important;
+      }
+
+      #slide-9 {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+      }
+
+      .slide-title-block h1 {
+        font-size: 1.55rem !important;
+        margin-bottom: 2px !important;
+        line-height: 1.2 !important;
+      }
+
+      .slide-title-block p.subtitle {
+        font-size: 0.8rem !important;
+        margin-bottom: 6px !important;
+        line-height: 1.3 !important;
+      }
+
+      .slide-meta {
+        margin-bottom: 4px !important;
+        font-size: 0.75rem !important;
+      }
+
+      .grid-2 {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        margin-top: 10px !important;
+      }
+
+      .grid-3 {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+        margin-top: 10px !important;
+      }
+
+      .grid-4 {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+        margin-top: 10px !important;
+      }
+
+      .glass-card {
+        background: #131B2E !important;
+        border: 1px solid rgba(99, 102, 241, 0.35) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        padding: 12px 14px !important;
+        border-radius: 8px !important;
+        opacity: 1 !important;
+        transform: none !important;
+        color: #F8FAFC !important;
+      }
+
+      .glass-card h2, .glass-card h3, .glass-card h4 {
+        margin-bottom: 4px !important;
+      }
+
+      .glass-card p, .glass-card li {
+        font-size: 0.76rem !important;
+        line-height: 1.35 !important;
+      }
+
+      .stat-number {
+        font-size: 1.6rem !important;
+        line-height: 1.1 !important;
+      }
+
+      .stat-label {
+        font-size: 0.72rem !important;
+      }
+
+      .table-container {
+        max-height: none !important;
+        overflow: visible !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        margin-top: 6px !important;
+      }
+
+      table.master-task-table {
+        font-size: 0.68rem !important;
+        line-height: 1.25 !important;
+      }
+
+      table.master-task-table th, table.master-task-table td {
+        padding: 5px 6px !important;
+      }
+
+      .badge {
+        font-size: 0.68rem !important;
+        padding: 2px 6px !important;
       }
     }
   </style>
@@ -808,9 +977,16 @@
         <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6-6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
       </button>
 
-      <button class="btn btn-emerald" onclick="window.print()" title="Export or Print Slide Deck to PDF">
+      <!-- Direct PDF Download Link -->
+      <a href="ERP_Strategic_Roadmap_Presentation.pdf" download="ERP_Strategic_Roadmap_Presentation.pdf" class="btn btn-emerald" id="downloadPdfBtn" title="Direct Download 14-Slide PDF Document">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+        Download PDF
+      </a>
+
+      <!-- Print / Save to PDF Trigger -->
+      <button class="btn btn-cyan" onclick="exportPDF()" title="Open Print Dialog to Save as PDF">
         <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/><path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/></svg>
-        Print / PDF
+        Print / Save PDF
       </button>
     </div>
   </header>
@@ -2147,9 +2323,16 @@
         <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 16px;">
           The roadmap is structured, the technical architecture is validated, and the enterprise ROI is quantified.
         </p>
-        <div style="display: flex; justify-content: center; gap: 12px;">
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px;">
           <button class="btn btn-primary" onclick="goToSlide(1)">Review From Beginning</button>
-          <button class="btn btn-emerald" onclick="window.print()">Export Complete Slide Deck (PDF)</button>
+          <a href="ERP_Strategic_Roadmap_Presentation.pdf" download="ERP_Strategic_Roadmap_Presentation.pdf" class="btn btn-emerald" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+            Download Complete PDF Deck
+          </a>
+          <button class="btn btn-cyan" onclick="exportPDF()" style="display: inline-flex; align-items: center; gap: 8px;">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/><path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/></svg>
+            Print / Save to PDF
+          </button>
         </div>
       </div>
     </section>
@@ -2541,6 +2724,43 @@
 
     // Initialize
     updateSlide();
+  
+    // PDF Export and Print Engine
+    function exportPDF() {
+      // Ensure all slides are prepared for printing
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach(s => {
+        s.style.display = 'flex';
+        s.style.opacity = '1';
+        s.style.transform = 'none';
+        s.style.animation = 'none';
+      });
+      
+      closeModal();
+      
+      setTimeout(() => {
+        window.print();
+      }, 150);
+    }
+
+    window.addEventListener('beforeprint', () => {
+      document.querySelectorAll('.slide').forEach(s => {
+        s.style.display = 'flex';
+        s.style.opacity = '1';
+        s.style.transform = 'none';
+        s.style.animation = 'none';
+      });
+    });
+
+    window.addEventListener('afterprint', () => {
+      document.querySelectorAll('.slide').forEach((s, idx) => {
+        s.style.display = (idx + 1 === currentSlide) ? 'flex' : 'none';
+        s.style.opacity = '';
+        s.style.transform = '';
+        s.style.animation = '';
+      });
+    });
+
   </script>
 </body>
 </html>
