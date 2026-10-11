@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise ERP & Analytics Strategic Roadmap | Position & Value Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #090D16;
+      --bg-secondary: #0F172A;
+      --bg-card: rgba(17, 24, 39, 0.78);
+      --bg-card-hover: rgba(30, 41, 59, 0.9);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.35);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --indigo: #6366F1;
+      --indigo-glow: rgba(99, 102, 241, 0.28);
+      --cyan: #06B6D4;
+      --cyan-glow: rgba(6, 182, 212, 0.22);
+      --emerald: #10B981;
+      --emerald-glow: rgba(16, 185, 129, 0.22);
+      --amber: #F59E0B;
+      --amber-glow: rgba(245, 158, 11, 0.22);
+      --rose: #F43F5E;
+      --rose-glow: rgba(244, 63, 94, 0.22);
+      --purple: #A855F7;
+
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.5;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.5) 0%, transparent 100%);
+      background-attachment: fixed;
+    }
+
+    /* Top Navigation Bar */
+    header.deck-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 13, 22, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--indigo), var(--cyan));
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      padding: 5px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      box-shadow: 0 0 16px var(--indigo-glow);
+    }
+
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-title span.role-title {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Slide Switcher Select */
+    .slide-select {
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
+      max-width: 280px;
+    }
+
+    .slide-select:hover, .slide-select:focus {
+      border-color: var(--indigo);
+      background: rgba(30, 41, 59, 0.95);
+      box-shadow: 0 0 10px var(--indigo-glow);
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border-subtle);
+      white-space: nowrap;
+    }
+
+    .btn {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 13px;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--indigo), #4F46E5);
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 4px 12px var(--indigo-glow);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #4F46E5, #4338CA);
+      box-shadow: 0 6px 16px var(--indigo-glow);
+    }
+
+    .btn-emerald {
+      background: linear-gradient(135deg, #059669, var(--emerald));
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+
+    /* Sub-header Quick-Jump Switcher Bar */
+    .quick-jump-bar {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .quick-jump-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .jump-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .jump-chip:hover {
+      background: rgba(99, 102, 241, 0.15);
+      color: #FFF;
+      border-color: var(--indigo);
+    }
+
+    .jump-chip.active {
+      background: linear-gradient(135deg, var(--indigo), var(--cyan));
+      color: #FFF;
+      border-color: transparent;
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    /* Progress bar */
+    .progress-line-container {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.05);
+      position: sticky;
+      top: 92px;
+      z-index: 98;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--indigo), var(--cyan), var(--emerald));
+      width: 7.14%;
+      transition: width 0.35s ease;
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    /* Floating Screen-Edge Slide Switch Buttons */
+    .floating-nav-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      width: 44px;
+      height: 54px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .floating-nav-btn:hover {
+      background: var(--indigo);
+      color: white;
+      border-color: var(--indigo);
+      box-shadow: 0 0 20px var(--indigo-glow);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .floating-nav-btn.prev {
+      left: 0;
+      border-radius: 0 12px 12px 0;
+      border-left: none;
+    }
+
+    .floating-nav-btn.next {
+      right: 0;
+      border-radius: 12px 0 0 12px;
+      border-right: none;
+    }
+
+    /* Main Deck Container */
+    main.deck-viewport {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 32px;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Slide Card */
+    .slide {
+      display: none;
+      width: 100%;
+      min-height: 80vh;
+      animation: fadeInSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.995);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Slide Header */
+    .slide-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .slide-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slide-tag::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+    }
+
+    .slide-title-block h1 {
+      font-size: 2.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #FFFFFF 30%, #CBD5E1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .slide-title-block p.subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 960px;
+      font-weight: 400;
+    }
+
+    /* Reusable Grid & Card Components */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 22px;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .glass-card.highlight {
+      border-color: rgba(99, 102, 241, 0.5);
+      background: linear-gradient(165deg, rgba(99, 102, 241, 0.08), rgba(15, 23, 42, 0.85));
+    }
+
+    .glass-card.emerald-border { border-color: rgba(16, 185, 129, 0.4); }
+    .glass-card.amber-border { border-color: rgba(245, 158, 11, 0.4); }
+    .glass-card.rose-border { border-color: rgba(244, 63, 94, 0.4); }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-indigo { background: rgba(99, 102, 241, 0.15); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .badge-cyan { background: rgba(6, 182, 212, 0.15); color: #22D3EE; border: 1px solid rgba(6, 182, 212, 0.3); }
+    .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-rose { background: rgba(244, 63, 94, 0.15); color: #FB7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+
+    /* Custom Metric / Stat */
+    .stat-number {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      font-family: var(--font-mono);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* Enhanced Task Card with Rich Hover Intel */
+    .task-card {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .task-card:hover {
+      border-color: var(--indigo);
+      background: rgba(26, 36, 56, 0.95);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 0 18px var(--indigo-glow);
+    }
+
+    .task-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .task-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+    }
+
+    .task-impact {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .task-roi {
+      font-size: 0.78rem;
+      color: var(--emerald);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(16, 185, 129, 0.08);
+      padding: 5px 9px;
+      border-radius: 6px;
+      border-left: 3px solid var(--emerald);
+    }
+
+    .task-business-context {
+      font-size: 0.77rem;
+      color: #E2E8F0;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 7px 10px;
+      border-radius: 6px;
+      border-left: 3px solid var(--indigo);
+      line-height: 1.45;
+    }
+
+    /* Rich Hover Intel Drawer (Appears automatically on hover) */
+    .hover-intel-box {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.2s ease;
+      background: rgba(10, 15, 28, 0.9);
+      border-radius: 8px;
+      border: 1px dashed rgba(99, 102, 241, 0.35);
+      font-size: 0.74rem;
+      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .task-card:hover .hover-intel-box {
+      max-height: 160px;
+      opacity: 1;
+      padding: 10px;
+      margin-top: 6px;
+    }
+
+    .hover-intel-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .hover-intel-label {
+      color: var(--cyan);
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 90px;
+    }
+
+    .hover-intel-val {
+      color: #CBD5E1;
+      line-height: 1.35;
+    }
+
+    /* Master Table Styling */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      max-height: 520px;
+    }
+
+    table.master-task-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.84rem;
+    }
+
+    table.master-task-table th {
+      position: sticky;
+      top: 0;
+      background: #111827;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      padding: 12px 14px;
+      border-bottom: 2px solid var(--border-subtle);
+      z-index: 10;
+    }
+
+    table.master-task-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+      color: var(--text-main);
+    }
+
+    table.master-task-table tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      margin-bottom: 8px;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--indigo);
+      color: white;
+      border-color: var(--indigo);
+      box-shadow: 0 0 10px var(--indigo-glow);
+    }
+
+    /* Wave / Timeline Blocks */
+    .timeline-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .wave-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px 22px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 20px;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .wave-block:hover {
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+    }
+
+    .wave-info h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .wave-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .wave-items-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .wave-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .wave-chip:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: var(--indigo);
+      transform: translateY(-1px);
+    }
+
+    .wave-chip.effort-high { border-left: 3px solid var(--rose); }
+    .wave-chip.effort-med { border-left: 3px solid var(--amber); }
+    .wave-chip.effort-low { border-left: 3px solid var(--emerald); }
+
+    /* Interactive modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal-content {
+      background: var(--bg-secondary);
+      border: 1px solid var(--indigo);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--indigo-glow);
+      border-radius: 16px;
+      max-width: 700px;
+      width: 100%;
+      padding: 28px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Print styling */
+    @media print {
+      body {
+        background: #0B0F19 !important;
+        color: #F8FAFC !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      header.deck-header, .quick-jump-bar, .progress-line-container, .floating-nav-btn, .filter-bar {
+        display: none !important;
+      }
+      main.deck-viewport {
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+      }
+      .slide {
+        display: flex !important;
+        page-break-after: always;
+        min-height: 100vh;
+        padding: 40px;
+        box-sizing: border-box;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="deck-header">
+    <div class="brand-section">
+      <div class="brand-badge">ERP Strategic Brief</div>
+      <div class="brand-title">
+        Enterprise ERP Roadmap &bull; <span class="role-title">Independent ERP &amp; Enterprise Data Department</span>
+      </div>
+    </div>
+    
+    <div class="nav-controls">
+      <!-- Direct Slide Switcher Dropdown -->
+      <select class="slide-select" id="slideSelect" onchange="goToSlide(parseInt(this.value))" title="Quick Slide Switcher">
+        <option value="1">Slide 1: Executive Blueprint &amp; Independent Mandate</option>
+        <option value="2">Slide 2: Why ERP Must NOT Be Merged</option>
+        <option value="3">Slide 3: 3 Core Domains of ERP Scope</option>
+        <option value="4">Slide 4: 4 Strategic ERP Roadmap Pillars</option>
+        <option value="5">Slide 5: Pillar 1 &ndash; System Health &amp; Cost Control</option>
+        <option value="6">Slide 6: Pillar 2 &ndash; Process Efficiency &amp; Treasury</option>
+        <option value="7">Slide 7: Pillar 3 &ndash; AI Innovation &amp; Payments</option>
+        <option value="8">Slide 8: Pillar 4 &ndash; Risk, Governance &amp; Controls</option>
+        <option value="9">Slide 9: Master Deliverables &amp; Scope Matrix</option>
+        <option value="10">Slide 10: Multi-Wave Phased Execution Roadmap</option>
+        <option value="11">Slide 11: Quantified Enterprise Value &amp; ROI</option>
+        <option value="12">Slide 12: Department Architecture &amp; Trajectory</option>
+        <option value="13">Slide 13: Scalable Governance &amp; Operating Model</option>
+        <option value="14">Slide 14: Strategic Alignment &amp; Action Plan</option>
+      </select>
+
+      <button class="btn" id="prevBtn" onclick="prevSlide()" title="Previous Slide (Arrow Left)">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg>
+        Prev
+      </button>
+
+      <div class="slide-counter" id="slideCounter">Slide 1 of 14</div>
+
+      <button class="btn btn-primary" id="nextBtn" onclick="nextSlide()" title="Next Slide (Arrow Right)">
+        Next
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6-6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+      </button>
+
+      <button class="btn btn-emerald" onclick="window.print()" title="Export or Print Slide Deck to PDF">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/><path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/></svg>
+        Print / PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- Quick-Jump Switcher Bar (Pills for all 14 slides) -->
+  <div class="quick-jump-bar" id="quickJumpBar">
+    <button class="jump-chip active" onclick="goToSlide(1)">01 &bull; Blueprint</button>
+    <button class="jump-chip" onclick="goToSlide(2)">02 &bull; Independent Mandate</button>
+    <button class="jump-chip" onclick="goToSlide(3)">03 &bull; Department Scope</button>
+    <button class="jump-chip" onclick="goToSlide(4)">04 &bull; 4 Pillars</button>
+    <button class="jump-chip" onclick="goToSlide(5)">05 &bull; P1 System Health</button>
+    <button class="jump-chip" onclick="goToSlide(6)">06 &bull; P2 Efficiency</button>
+    <button class="jump-chip" onclick="goToSlide(7)">07 &bull; P3 AI &amp; Pay</button>
+    <button class="jump-chip" onclick="goToSlide(8)">08 &bull; P4 Governance</button>
+    <button class="jump-chip" onclick="goToSlide(9)">09 &bull; Master Matrix</button>
+    <button class="jump-chip" onclick="goToSlide(10)">10 &bull; Phased Waves</button>
+    <button class="jump-chip" onclick="goToSlide(11)">11 &bull; ROI Scorecard</button>
+    <button class="jump-chip" onclick="goToSlide(12)">12 &bull; Org Architecture</button>
+    <button class="jump-chip" onclick="goToSlide(13)">13 &bull; Operating Model</button>
+    <button class="jump-chip" onclick="goToSlide(14)">14 &bull; Next Steps</button>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-line-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Floating Screen-Edge Slide Switch Buttons -->
+  <button class="floating-nav-btn prev" onclick="prevSlide()" title="Previous Slide (Arrow Left)">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg>
+  </button>
+  <button class="floating-nav-btn next" onclick="nextSlide()" title="Next Slide (Arrow Right)">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6-6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+  </button>
+
+  <!-- Main Viewport -->
+  <main class="deck-viewport">
+
+    <!-- SLIDE 1: Title & Strategic Positioning -->
+    <section class="slide active" id="slide-1">
+      <div class="slide-meta">
+        <span class="slide-tag">Executive Presentation &bull; Departmental Blueprint</span>
+        <span class="badge badge-indigo">Autonomous Department &bull; Strategic Enterprise Function</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Enterprise ERP &amp; Analytics Strategic Roadmap</h1>
+        <p class="subtitle">Establishing ERP as an Independent Department: Dynamics 365 F&amp;O Backbone, Enterprise Data Engineering, Analytics &amp; Statutory Compliance</p>
+      </div>
+
+      <div class="grid-3" style="margin-top: 36px;">
+        <div class="glass-card highlight">
+          <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--cyan); font-weight: 700; margin-bottom: 8px;">Autonomous Mandate</div>
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: #FFF; margin-bottom: 6px;">Independent ERP &amp; Enterprise Data Department</h2>
+          <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">Unified governance of Core F&amp;O, Big Data Pipelines, Executive BI &amp; Statutory Compliance under dedicated departmental leadership.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span class="badge badge-indigo">Independent Department</span>
+            <span class="badge badge-cyan">D365 F&amp;O Backbone</span>
+            <span class="badge badge-emerald">Data Engineering &amp; Lakehouse</span>
+            <span class="badge badge-amber">Finance &amp; Compliance</span>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--emerald); font-weight: 700; margin-bottom: 8px;">Strategic Department Objective</div>
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: #FFF; margin-bottom: 8px;">De-Risk Operations &amp; Unify the Data Stack</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Treating ERP as an autonomous strategic function prevents compliance dilution and conflicting priorities. Orchestrating 16 enterprise initiatives across Microsoft Dynamics 365, Azure Synapse, Global Banking H2H, and AI Automation to cut cloud costs and ensure audit compliance.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--amber); font-weight: 700; margin-bottom: 8px;">Expansive Operational Scope</div>
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: #FFF; margin-bottom: 8px;">End-to-End Enterprise Nervous System</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            ERP covers a vast cross-functional footprint: <strong>Statutory Accounting &amp; Audit</strong>, <strong>Enterprise Data Engineering (100M+ Synapse records)</strong>, <strong>Power BI Semantic Models</strong>, and <strong>FinOps (₹55&ndash;65L annual cloud savings delivered)</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="glass-card" style="margin-top: 24px; background: rgba(99, 102, 241, 0.05); border-color: rgba(99, 102, 241, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--indigo); text-transform: uppercase;">Core Strategic Doctrine</div>
+            <div style="font-size: 1.02rem; font-weight: 600; color: #FFF; margin-top: 2px;">
+              &ldquo;ERP is the enterprise operational nervous system. Spanning Finance &amp; Compliance, Big Data Engineering, and Executive BI, it must be governed as an autonomous, independent department &mdash; never merged or diluted across generic IT or BI.&rdquo;
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="nextSlide()">Explore Strategic Roadmap &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: The Core Challenge & The Linchpin Problem -->
+    <section class="slide" id="slide-2">
+      <div class="slide-meta">
+        <span class="slide-tag">Organizational Governance &bull; Structural Alignment</span>
+        <span class="badge badge-rose">Strategic Imperative: Autonomous Function</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Why ERP Must NOT Be Merged: The Independent Department Mandate</h1>
+        <p class="subtitle">Attempting to merge ERP into Generic IT, General BI, or Accounting Operations dilutes compliance, creates fatal blind spots, and compromises financial data integrity.</p>
+      </div>
+
+      <div class="grid-4" style="margin-top: 24px;">
+        <div class="glass-card rose-border">
+          <div class="badge badge-rose" style="margin-bottom: 10px;">Why Merging with Generic IT Fails</div>
+          <h4 style="font-size: 1rem; color: #FFF; margin-bottom: 6px;">Ticket Queue Mentality &amp; Zero Accounting DNA</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+            IT views ERP as mere software licenses and support tickets. IT lacks accounting intuition, ledger balancing, statutory tax laws (GST/TDS/E-Invoicing), and compliance audit standards. Critical financial enhancements get stalled in generic queues, risking statutory penalties, failed audits, and month-end closing chaos.
+          </p>
+        </div>
+
+        <div class="glass-card amber-border">
+          <div class="badge badge-amber" style="margin-bottom: 10px;">Why Merging with General BI Fails</div>
+          <h4 style="font-size: 1rem; color: #FFF; margin-bottom: 6px;">Surface Dashboards Without Ledger Balancing</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+            General BI excels at front-end visual widgets and sales metrics. However, they lack understanding of double-entry bookkeeping, posting profiles, sub-ledger to GL reconciliations, and transactional writebacks. Dashboards built without ERP accounting controls report inaccurate figures that fail board and auditor scrutiny.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <div class="badge badge-cyan" style="margin-bottom: 10px;">Why Sub-Merging Under Accounting Fails</div>
+          <h4 style="font-size: 1rem; color: #FFF; margin-bottom: 6px;">Lacks Cloud Architecture &amp; Data Engineering</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+            Finance teams understand accounting ledgers, but lack the technical depth for cloud big-data engineering (Synapse, Spark pools, delta tables, API webhooks, CI/CD pipelines, and cloud FinOps). Treating ERP as an accounting end-user tool leaves critical cloud systems, data pipelines, and costs unmanaged.
+          </p>
+        </div>
+
+        <div class="glass-card emerald-border">
+          <div class="badge badge-emerald" style="margin-bottom: 10px;">The Independent ERP Department</div>
+          <h4 style="font-size: 1rem; color: #FFF; margin-bottom: 6px;">Unified Full-Stack Ownership &amp; C-Suite Agility</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+            ERP operates as an autonomous, standalone department bridging <strong>Finance &amp; Statutory Compliance + 100M+ Synapse Data Engineering + Executive BI Reporting</strong> under single accountable leadership &mdash; reporting directly to executive leadership (CFO / CIO).
+          </p>
+        </div>
+      </div>
+
+      <div class="glass-card highlight" style="margin-top: 24px;">
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <div style="background: rgba(99, 102, 241, 0.2); width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">
+            ⚡
+          </div>
+          <div>
+            <h3 style="font-size: 1.15rem; color: #FFF; font-weight: 700; margin-bottom: 4px;">Executive Verdict: ERP Scope is Too Expansive &amp; High-Stakes to Merge</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+              ERP is neither generic IT maintenance nor cosmetic BI visualization. It governs statutory compliance, corporate treasury, multi-million dollar cloud infrastructure, and the core general ledger. Establishing ERP as an <strong>Independent Department &amp; Autonomous Function</strong> guarantees compliance defense, unifies data pipelines, and delivers verified numbers to executive leadership.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: Role Value & Strategic Mandate -->
+    <section class="slide" id="slide-3">
+      <div class="slide-meta">
+        <span class="slide-tag">Departmental Architecture &bull; Full-Stack Scope</span>
+        <span class="badge badge-indigo">Unified Operational Continuum</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>The 3 Core Domains of the Independent ERP Department</h1>
+        <p class="subtitle">ERP covers a massive enterprise scope spanning Finance Operations &amp; Statutory Compliance, Big Data Engineering, and Executive BI Reporting under unified governance.</p>
+      </div>
+
+      <div class="grid-3" style="margin-top: 20px;">
+        <!-- Domain 1: Finance & Compliance -->
+        <div class="glass-card emerald-border">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="font-size: 1.1rem; color: var(--emerald); font-weight: 700;">1. Finance Operations &amp; Compliance</h3>
+            <span class="badge badge-emerald">Statutory Core</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">The transactional &amp; regulatory backbone centered around Microsoft Dynamics 365 F&amp;O:</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem; color: #E2E8F0;">
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--emerald); font-weight: 700;">&bull;</span>
+              <span><strong>Core Accounting:</strong> GL, AP, AR, Fixed Assets, Cost Accounting, Multi-currency revaluation &amp; Month-End closing.</span>
+            </li>
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--emerald); font-weight: 700;">&bull;</span>
+              <span><strong>Statutory &amp; Tax Compliance:</strong> GST, TDS, E-Invoicing, RBI banking norms, and internal/statutory audit defense.</span>
+            </li>
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--emerald); font-weight: 700;">&bull;</span>
+              <span><strong>Treasury &amp; Bank Automation:</strong> JP Morgan Host-to-Host STP, ICICI payment gateways, and automated bank reconciliation.</span>
+            </li>
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--emerald); font-weight: 700;">&bull;</span>
+              <span><strong>Internal Controls &amp; SoD:</strong> Strict Segregation of Duties (View-only Trial Balance, restricted currency settlement).</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Domain 2: Data Engineering -->
+        <div class="glass-card highlight">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="font-size: 1.1rem; color: var(--cyan); font-weight: 700;">2. Enterprise Data Engineering</h3>
+            <span class="badge badge-cyan">Big Data Engine</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">High-throughput cloud data architecture bridging ERP transactions to enterprise lakehouses:</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem; color: #E2E8F0;">
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--cyan); font-weight: 700;">&bull;</span>
+              <span><strong>Azure Synapse &amp; Lakehouse:</strong> ADLS Gen2, Apache Spark pools, Delta Lake tables, and partition management.</span>
+            </li>
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--cyan); font-weight: 700;">&bull;</span>
+              <span><strong>100M+ Records Processed:</strong> Scalable ETL/ELT orchestration handling massive transaction volumes with zero data loss.</span>
+            </li>
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--cyan); font-weight: 700;">&bull;</span>
+              <span><strong>Integration Middleware:</strong> REST API webhooks (Razorpay/Cashfree), DMF staging, and Azure DevOps CI/CD pipelines.</span>
+            </li>
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--cyan); font-weight: 700;">&bull;</span>
+              <span><strong>Cloud FinOps Governance:</strong> Proactive Spark tuning and VM governance delivering <strong>₹55&ndash;65 Lacs/year recurring savings</strong>.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Domain 3: BI & Analytics -->
+        <div class="glass-card amber-border">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="font-size: 1.1rem; color: var(--amber); font-weight: 700;">3. Analytics &amp; Executive BI</h3>
+            <span class="badge badge-amber">Decision Intelligence</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">Executive decision intelligence directly reconciled with general ledger transactions:</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem; color: #E2E8F0;">
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--amber); font-weight: 700;">&bull;</span>
+              <span><strong>Power BI Semantic Models:</strong> DirectLake &amp; Import mode models aligned to GL posting profiles for 100% data integrity.</span>
+            </li>
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--amber); font-weight: 700;">&bull;</span>
+              <span><strong>Financial Intelligence:</strong> Automated P&amp;L, balance sheet, working capital, and real-time cashflow forecasting models.</span>
+            </li>
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--amber); font-weight: 700;">&bull;</span>
+              <span><strong>Self-Service Empowerment:</strong> Curated enterprise data marts serving 100+ finance and business executives.</span>
+            </li>
+            <li style="display: flex; gap: 8px;">
+              <span style="color: var(--amber); font-weight: 700;">&bull;</span>
+              <span><strong>Automated Reconciliations:</strong> Systemic cross-checks between ERP ledgers, bank statements, and BI dashboards.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 16px;">
+        <div class="glass-card" style="padding: 14px 20px;">
+          <div class="stat-number" style="color: var(--cyan);">100M+</div>
+          <div class="stat-label">ERP Records Mastered in Synapse Lakehouse</div>
+        </div>
+        <div class="glass-card" style="padding: 14px 20px;">
+          <div class="stat-number" style="color: var(--emerald);">₹55&ndash;65L</div>
+          <div class="stat-label">Annual Cloud Cost Savings Delivered &amp; In-Flight</div>
+        </div>
+        <div class="glass-card" style="padding: 14px 20px;">
+          <div class="stat-number" style="color: var(--amber);">100%</div>
+          <div class="stat-label">Statutory Compliance &amp; Audit Reconciled</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: The 4 Strategic Pillars & ROI Framework -->
+    <section class="slide" id="slide-4">
+      <div class="slide-meta">
+        <span class="slide-tag">Strategic Architecture &bull; 16 Initiatives</span>
+        <span class="badge badge-cyan">Comprehensive ERP Blueprint</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>The 4 Strategic ERP Roadmap Pillars</h1>
+        <p class="subtitle">Structuring 16 high-impact deliverables into enterprise pillars delivering hard-dollar ROI, efficiency, and governance.</p>
+      </div>
+
+      <div class="grid-4" style="margin-top: 24px;">
+        <!-- Pillar 1 -->
+        <div class="glass-card highlight" style="border-top: 4px solid var(--indigo);">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--indigo); text-transform: uppercase;">Pillar 01</div>
+          <h3 style="font-size: 1.1rem; color: #FFF; margin: 6px 0 10px;">System Health &amp; Cost Control</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px;">
+            Modernizing developer environments, meeting Microsoft PPAC mandates, and multi-phase data archival.
+          </p>
+          <div style="font-size: 0.75rem; color: var(--indigo); font-weight: 700; margin-bottom: 8px;">4 Key Deliverables:</div>
+          <ul style="font-size: 0.75rem; color: #CBD5E1; list-style: none; display: flex; flex-direction: column; gap: 4px;">
+            <li>&bull; CHE to UDE Migration</li>
+            <li>&bull; LCS to PPAC Movement</li>
+            <li>&bull; Data Archival (Phase 1)</li>
+            <li>&bull; Data Archival (Phase 2)</li>
+          </ul>
+          <div style="margin-top: 14px;" class="badge badge-indigo">Value: Direct Cloud Spend Reduction</div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-card" style="border-top: 4px solid var(--cyan);">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--cyan); text-transform: uppercase;">Pillar 02</div>
+          <h3 style="font-size: 1.1rem; color: #FFF; margin: 6px 0 10px;">Process Efficiency &amp; Treasury</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px;">
+            Straight-through global bank processing, real-time FX exposure intelligence, and dispute acceleration workflows.
+          </p>
+          <div style="font-size: 0.75rem; color: var(--cyan); font-weight: 700; margin-bottom: 8px;">3 Key Deliverables:</div>
+          <ul style="font-size: 0.75rem; color: #CBD5E1; list-style: none; display: flex; flex-direction: column; gap: 4px;">
+            <li>&bull; JP Morgan Host-to-Host (H2H)</li>
+            <li>&bull; Real-time Forex Exposure Engine</li>
+            <li>&bull; Automated Dispute Framework</li>
+          </ul>
+          <div style="margin-top: 14px;" class="badge badge-cyan">Value: Automated Bank Reconciliation</div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="glass-card" style="border-top: 4px solid var(--emerald);">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--emerald); text-transform: uppercase;">Pillar 03</div>
+          <h3 style="font-size: 1.1rem; color: #FFF; margin: 6px 0 10px;">AI &amp; Digital Payments</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px;">
+            AI Builder OCR for touchless AP invoice entry, TBO Pay API checkouts, and zero-touch vendor payment runs.
+          </p>
+          <div style="font-size: 0.75rem; color: var(--emerald); font-weight: 700; margin-bottom: 8px;">4 Key Deliverables:</div>
+          <ul style="font-size: 0.75rem; color: #CBD5E1; list-style: none; display: flex; flex-direction: column; gap: 4px;">
+            <li>&bull; Invoice Capture (OCR / AI)</li>
+            <li>&bull; TBO Pay Gateway Integration</li>
+            <li>&bull; Vendor Payment Automation</li>
+            <li>&bull; Bank Master Bulk Onboarding</li>
+          </ul>
+          <div style="margin-top: 14px;" class="badge badge-emerald">Value: 200+ AP Hours Reallocated</div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="glass-card" style="border-top: 4px solid var(--rose);">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--rose); text-transform: uppercase;">Pillar 04</div>
+          <h3 style="font-size: 1.1rem; color: #FFF; margin: 6px 0 10px;">Risk, Governance &amp; Controls</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px;">
+            Automated CI/CD deployments, Segregation of Duties on Trial Balance, multi-currency restrictions &amp; batch fault tolerance.
+          </p>
+          <div style="font-size: 0.75rem; color: var(--rose); font-weight: 700; margin-bottom: 8px;">5 Key Deliverables:</div>
+          <ul style="font-size: 0.75rem; color: #CBD5E1; list-style: none; display: flex; flex-direction: column; gap: 4px;">
+            <li>&bull; Azure DevOps CI/CD Pipelines</li>
+            <li>&bull; SoD Roles (Trial Balance)</li>
+            <li>&bull; Currency Allocation Restrictions</li>
+            <li>&bull; Allocation Reversal / Error Resiliency</li>
+            <li>&bull; GL &amp; Master Data Audit Scripts</li>
+          </ul>
+          <div style="margin-top: 14px;" class="badge badge-rose">Value: SOX Compliance &amp; Zero Outages</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: Pillar 1 Deep-Dive – System Health & Cost Control -->
+    <section class="slide" id="slide-5">
+      <div class="slide-meta">
+        <span class="slide-tag">Pillar 01 Deep-Dive &bull; 4 Deliverables</span>
+        <span class="badge badge-indigo">Direct Azure Infrastructure Savings</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Pillar 1: System Health &amp; Cloud Cost Optimization</h1>
+        <p class="subtitle">Cutting developer cloud compute bills, avoiding $30-$40/GB Dataverse storage fees, and future-proofing ERP administration.</p>
+      </div>
+
+      <div class="grid-2" style="margin-top: 20px;">
+        <!-- Task 1 -->
+        <div class="task-card" onclick="openModal(1)">
+          <div class="task-card-header">
+            <span class="task-title">1. Replacing CHE with UDE (Unified Dev Env)</span>
+            <span class="badge badge-rose">High Effort &bull; 4–6 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Modernizes developer experience with local VS 2022; eliminates rented cloud virtual machines.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Eliminates 100% of monthly Azure VM compute charges for all active developers.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Instead of paying hourly cloud rent for remote developer VMs, developers code directly on their local machines, immediately halting recurring Azure compute billing.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Dev Fleet, Cloud Infrastructure, FinOps</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">VS 2022, Docker Containers, Power Platform Tools</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">100% Azure Dev VM Invoices Eliminated</span></div>
+          </div>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="task-card" onclick="openModal(2)">
+          <div class="task-card-header">
+            <span class="task-title">2. Power Platform Movement (LCS to PPAC)</span>
+            <span class="badge badge-rose">High Effort &bull; 8–12 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Mandatory Microsoft architectural migration merging F&amp;O into the unified Dataverse ecosystem.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Avoids legacy LCS support overhead and aligns with Microsoft’s official long-term ERP roadmap.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Microsoft is sunsetting the legacy LCS portal. We are moving our entire ERP control center to PPAC to maintain full enterprise support.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Enterprise IT, Microsoft Support, ERP Architecture</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">Dual-Write, Dataverse Virtual Entities, PPAC</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">Zero Downtime on Microsoft Support Mandate</span></div>
+          </div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="task-card" onclick="openModal(3)">
+          <div class="task-card-header">
+            <span class="task-title">3. Data Archival (Phase 1 – Standard F&amp;O)</span>
+            <span class="badge badge-amber">Med–High &bull; 4–6 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Shrinks active database footprint by archiving historical core accounting and GL transactions.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Halts massive Microsoft Dataverse overage penalties ($30–$40 per additional GB/month).
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Moving multi-year-old financial transaction records into low-cost cold storage so live ERP queries remain blazing fast and storage invoices drop drastically.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Finance Leadership, Cloud Cost Governance, DBAs</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">D365 Standard Archival Jobs, ADLS Cold Tier</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">Avoidance of $30–$40/GB/Mo Penalties</span></div>
+          </div>
+        </div>
+
+        <!-- Task 4 -->
+        <div class="task-card" onclick="openModal(4)">
+          <div class="task-card-header">
+            <span class="task-title">4. Data Archival (Phase 2 – Custom &amp; DMF Staging)</span>
+            <span class="badge badge-rose">High Effort &bull; 8–12 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Archives bespoke custom tables and clears out bloated DMF staging execution data.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Guarantees peak database query speeds and drastically reduces backup/upgrade maintenance windows.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Expanding storage optimization by writing custom rules to clear out bespoke company tables and temporary batch staging files.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">ERP Technical Team, Analytics Ops, DBAs</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">Custom X++ Archival Scripts, DMF Execution Clean</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">40% Faster Query Response on Staging</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: Pillar 2 Deep-Dive – Process Efficiency & Treasury -->
+    <section class="slide" id="slide-6">
+      <div class="slide-meta">
+        <span class="slide-tag">Pillar 02 Deep-Dive &bull; 3 Deliverables</span>
+        <span class="badge badge-cyan">Cash Flow &amp; Global Treasury Integration</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Pillar 2: Process Efficiency &amp; Treasury Automation</h1>
+        <p class="subtitle">Direct API-level bank integration, real-time currency exposure analytics, and accelerated dispute resolution.</p>
+      </div>
+
+      <div class="grid-3" style="margin-top: 20px;">
+        <!-- Task 5 -->
+        <div class="task-card" onclick="openModal(5)">
+          <div class="task-card-header">
+            <span class="task-title">5. Host-to-Host Bank Integration (JP Morgan)</span>
+            <span class="badge badge-rose">High Effort &bull; 10–14 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Enables automated Straight-Through Processing (STP) for global vendor payments and instant e-statements.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Drastically reduces bank fees, eliminates manual bank file uploads, cuts fraud risk.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Direct server-to-server connection with JP Morgan. Payments execute and bank statements reconcile automatically without anyone manually uploading CSVs.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Global Treasury, AP, JP Morgan Tech Team</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">ISO20022 XML, PGP Encryption, SFTP / API</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">100% Automated Straight-Through Processing</span></div>
+          </div>
+        </div>
+
+        <!-- Task 6 -->
+        <div class="task-card" onclick="openModal(6)">
+          <div class="task-card-header">
+            <span class="task-title">6. Real-Time Forex Report Engine</span>
+            <span class="badge badge-amber">Med–High &bull; 4–6 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Provides instant C-suite visibility into currency exposure, accounting vs. transaction currencies, and gains/losses.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Replaces days of manual Excel reconciliation, avoids audit penalties, protects margins.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> An automated analytical dashboard calculating exactly how much the company makes or loses across multi-currency operations due to exchange rate swings.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">CFO, Group Treasury, External Statutory Auditors</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">Synapse SQL Views, Real-time FX Feeds, Power BI</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">Instant Currency Visibility &amp; Margin Protection</span></div>
+          </div>
+        </div>
+
+        <!-- Task 7 -->
+        <div class="task-card" onclick="openModal(7)">
+          <div class="task-card-header">
+            <span class="task-title">7. Dispute Tracker &amp; Workflow Automation</span>
+            <span class="badge badge-amber">Med Effort &bull; 6–8 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Accelerates resolution of vendor &amp; customer invoice discrepancies through automated approval routing.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Recovers trapped receivables faster, eliminates vendor late-payment interest fees.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> An automated internal ticketing workflow inside ERP. Disputed bills route automatically to responsible managers instead of stalling in email chains.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Commercial Ops, Vendor Relations, AR Team</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">Power Automate, Custom Dispute Entities, SLAs</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">50% Faster Dispute Resolution Turnaround</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card highlight" style="margin-top: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--cyan); font-weight: 700;">Treasury Impact Highlight</span>
+            <h4 style="font-size: 1.05rem; color: #FFF; margin-top: 2px;">Straight-Through Processing Transforms Financial Velocity</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Connecting JP Morgan directly to D365 F&amp;O slashes payment cycle times by 75% and eliminates human error during high-volume disbursements.
+            </p>
+          </div>
+          <div class="badge badge-cyan" style="font-size: 0.85rem; padding: 8px 14px;">75% Faster Payment Cycles</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: Pillar 3 Deep-Dive – AI Innovation & Payments -->
+    <section class="slide" id="slide-7">
+      <div class="slide-meta">
+        <span class="slide-tag">Pillar 03 Deep-Dive &bull; 4 Deliverables</span>
+        <span class="badge badge-emerald">Touchless Accounts Payable &amp; Gateway Scale</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Pillar 3: AI Innovation &amp; Digital Payments</h1>
+        <p class="subtitle">Deploying AI OCR Builder for automated AP entry, integrating TBO Pay checkout APIs, and zero-touch payment proposal runs.</p>
+      </div>
+
+      <div class="grid-2" style="margin-top: 20px;">
+        <!-- Task 8 -->
+        <div class="task-card" onclick="openModal(8)">
+          <div class="task-card-header">
+            <span class="task-title">8. Invoice Capture (AI Builder OCR for SG&amp;A)</span>
+            <span class="badge badge-rose">High Effort &bull; 12–16 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Employs Microsoft AI Builder and OCR to ingest, extract, and match supplier PDF invoices directly into D365.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Direct reduction in AP manual data entry headcount; eliminates paper delays.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Cognitive AI reads incoming supplier PDF invoices, extracts key fields, and enters them into ERP automatically—zero manual re-keying.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Accounts Payable Leadership, Shared Services</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">AI Builder Document Processing, 3-Way Auto Match</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">200+ Hours Monthly AP Entry Reallocated</span></div>
+          </div>
+        </div>
+
+        <!-- Task 9 -->
+        <div class="task-card" onclick="openModal(9)">
+          <div class="task-card-header">
+            <span class="task-title">9. TBO Pay Related Core Development</span>
+            <span class="badge badge-rose">High Effort &bull; 10–14 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Seamless API integration with specialized payment gateways to support instant booking checkouts and ledger postings.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Prevents revenue leakage, reduces checkout cart dropouts, and guarantees automated settlement.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Wiring digital payment processors into ERP so customer checkouts are instant, secure, and automatically recorded in the ledger without delay.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Product Engineering, Checkout Ops, Revenue Accounting</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">RESTful Gateway Webhooks, Auto GL Settlement</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">Zero Revenue Leakage &amp; Sub-Second Postings</span></div>
+          </div>
+        </div>
+
+        <!-- Task 10 -->
+        <div class="task-card" onclick="openModal(10)">
+          <div class="task-card-header">
+            <span class="task-title">10. Vendor Payment Proposal Automation</span>
+            <span class="badge badge-amber">Med Effort &bull; 6–8 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Zero-touch payment proposal algorithms analyzing due dates, cash balances, and early settlement discount terms.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Captures 100% of vendor cash discounts and saves 15+ hours weekly in AP proposal generation.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Setting up smart rules so ERP automatically drafts the list of bills to pay each week based on cash rules, saving AP from searching thousands of invoices.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">AP Team, Treasury Cash Desk, Vendor Managers</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">AP Batch Jobs, Cash Priority Algorithms</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">100% Capture of 1–2% Early Settlement Discounts</span></div>
+          </div>
+        </div>
+
+        <!-- Task 11 -->
+        <div class="task-card" onclick="openModal(11)">
+          <div class="task-card-header">
+            <span class="task-title">11. Bank Master CSV Bulk Implementation</span>
+            <span class="badge badge-emerald">Low–Med &bull; 3–4 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Standardized bulk import templates for agency, supplier, and airline bank details with rigorous checksum validation.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Stops costly payment bounces, prevents fraud, and accelerates supplier onboarding by days.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> A standardized bulk template allowing the company to import thousands of verified vendor bank details in seconds, eliminating typos that cause bounced payments.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Master Data Team, Agency Onboarding, Supplier Support</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">DMF Entities, IBAN/SWIFT Regex Checksums</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">Zero Misrouted Payments &amp; 90% Faster Onboarding</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: Pillar 4 Deep-Dive – Risk, Governance & Controls -->
+    <section class="slide" id="slide-8">
+      <div class="slide-meta">
+        <span class="slide-tag">Pillar 04 Deep-Dive &bull; 5 Deliverables</span>
+        <span class="badge badge-rose">Audit Proofing &amp; Infrastructure Safety</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Pillar 4: Risk, Governance &amp; Financial Controls</h1>
+        <p class="subtitle">Eliminating deployment crashes via CI/CD, locking down Trial Balance SoD, and safeguarding multi-currency settlements.</p>
+      </div>
+
+      <div class="grid-3" style="margin-top: 20px;">
+        <!-- Task 12 -->
+        <div class="task-card" onclick="openModal(12)">
+          <div class="task-card-header">
+            <span class="task-title">12. CI/CD DevOps Pipeline Creation</span>
+            <span class="badge badge-rose">High Effort &bull; 4–6 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Automated build, code analysis, testing, and deployment pipelines via Azure DevOps for all F&amp;O customizations.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Prevents disastrous production downtime, bugs, and emergency rollbacks.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> A digital quality-control assembly line that automatically tests code before it touches production, preventing developer mistakes from crashing the ERP.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">ERP Engineering, QA, Release Management</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">Azure DevOps YAML, Automated Regression Gates</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">Zero Production Deployment Downtime</span></div>
+          </div>
+        </div>
+
+        <!-- Task 13 -->
+        <div class="task-card" onclick="openModal(13)">
+          <div class="task-card-header">
+            <span class="task-title">13. Roles Validation (Trial Balance)</span>
+            <span class="badge badge-emerald">Low–Med &bull; 3–4 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Enforces strict Segregation of Duties (SoD) by ensuring reporting users have View-Only access to financial statements.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Mitigates financial fraud risks; guarantees 100% statutory and SOX audit compliance.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Locking vault doors: ensuring staff who only need to review financial reports cannot accidentally or intentionally alter ledger figures.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Internal Audit, SOX Compliance, Controllership</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">F&amp;O Security Diagnostics, SoD Conflict Matrix</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">Zero Statutory Audit Findings on Ledger Roles</span></div>
+          </div>
+        </div>
+
+        <!-- Task 14 -->
+        <div class="task-card" onclick="openModal(14)">
+          <div class="task-card-header">
+            <span class="task-title">14. Multi-Currency Allocation Restrictions</span>
+            <span class="badge badge-amber">Med Effort &bull; 4–6 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Hard system blocks preventing users from settling invoices and payments in mismatched currencies without realized FX entries.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Eliminates expensive technical database cleanups and ledger reconciliation crises.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Guardrails stopping staff from mistakenly settling a EUR invoice with USD without proper exchange rate calculations that throw accounting out of balance.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Financial Accounting, Billing Ops, ERP Support</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">CustTransOpen / VendTransOpen Event Handlers</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">100% Prevention of Cross-Currency Discrepancies</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 14px;">
+        <!-- Task 15 -->
+        <div class="task-card" onclick="openModal(15)">
+          <div class="task-card-header">
+            <span class="task-title">15. Allocation Reversal &amp; Batch Exception Handling</span>
+            <span class="badge badge-amber">Med–High &bull; 8–10 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Safe un-settlement algorithms and isolated row-level error handling for overnight batch processing.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Reversible allocations without IT emergency scripts; prevents batch job crashes when encountering a single invalid record.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> An "undo" function for wrong payment applications, plus safety nets so if one payment has an error, the batch skips it and finishes the remaining 9,999 transactions smoothly.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">Core Accounting, ERP Batch Support, Data Ops</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">Row-Level Try-Catch Isolation, Savepoints, Error Tables</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">80% Reduction in Batch Failure Support Tickets</span></div>
+          </div>
+        </div>
+
+        <!-- Task 16 -->
+        <div class="task-card" onclick="openModal(16)">
+          <div class="task-card-header">
+            <span class="task-title">16. Activity &amp; GL Master Data Validation</span>
+            <span class="badge badge-emerald">Low Effort &bull; 2–3 Wks</span>
+          </div>
+          <div class="task-impact">
+            <strong>Business Impact:</strong> Automated validation scripts ensuring General Ledger master codes and vendor records remain uncorrupted.
+          </div>
+          <div class="task-roi">
+            💰 ROI: Completely avoids statutory audit fines and eliminates reporting reconciliation delays.
+          </div>
+          <div class="task-business-context">
+            <strong>Business Context:</strong> Automated digital watchdogs continually checking that master financial accounts and vendor lists follow company rules and remain uncorrupted.
+          </div>
+          <div class="hover-intel-box">
+            <div class="hover-intel-row"><span class="hover-intel-label">Stakeholders:</span><span class="hover-intel-val">GL Accounting, Statutory Compliance, Reporting</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Tech Enabler:</span><span class="hover-intel-val">Nightly SQL Validation Scripts, Automated Alert Webhooks</span></div>
+            <div class="hover-intel-row"><span class="hover-intel-label">Key KPI:</span><span class="hover-intel-val">Zero Master Data Corruption &amp; 100% Clean Audit</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: Master Task Inventory (Filterable) -->
+    <section class="slide" id="slide-9">
+      <div class="slide-meta">
+        <span class="slide-tag">Operational Detail &bull; 16 Enterprise Deliverables</span>
+        <span class="badge badge-cyan">Full Master Inventory</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Master ERP Deliverables &amp; Scope Matrix</h1>
+        <p class="subtitle">Complete technical specification of all 16 deliverables including durations, effort tiers, business impacts, and Enterprise ROI delivery.</p>
+      </div>
+
+      <div class="filter-bar">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Filter by Pillar:</span>
+        <button class="filter-btn active" onclick="filterTable('all', this)">All (16)</button>
+        <button class="filter-btn" onclick="filterTable('System Health', this)">System Health (4)</button>
+        <button class="filter-btn" onclick="filterTable('Process Efficiency', this)">Process Efficiency (3)</button>
+        <button class="filter-btn" onclick="filterTable('New Development or Automation', this)">New Dev &amp; Automation (4)</button>
+        <button class="filter-btn" onclick="filterTable('Risk & Control', this)">Risk &amp; Control (5)</button>
+      </div>
+
+      <div class="table-container">
+        <table class="master-task-table" id="tasksTable">
+          <thead>
+            <tr>
+              <th style="width: 5%;">#</th>
+              <th style="width: 14%;">Pillar / Category</th>
+              <th style="width: 20%;">Deliverable &amp; Scope</th>
+              <th style="width: 9%;">Duration</th>
+              <th style="width: 9%;">Effort</th>
+              <th style="width: 23%;">Business Impact</th>
+              <th style="width: 20%;">Cost Saving & Enterprise ROI Delivery</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-category="System Health">
+              <td><strong>01</strong></td>
+              <td><span class="badge badge-indigo">System Health</span></td>
+              <td><strong>Replacing CHE with UDE</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Unified Dev Environments</span></td>
+              <td>4–6 Wks</td>
+              <td><span class="badge badge-rose">High</span></td>
+              <td>Modernizes developer workflow via VS 2022; moves dev to local hardware.</td>
+              <td><span style="color: var(--emerald); font-weight: 600;">High:</span> Eliminates monthly Azure VM compute costs across developer fleet.</td>
+            </tr>
+            <tr data-category="System Health">
+              <td><strong>02</strong></td>
+              <td><span class="badge badge-indigo">System Health</span></td>
+              <td><strong>Power Platform Movement (LCS &rarr; PPAC)</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Mandatory MSFT Architecture</span></td>
+              <td>8–12 Wks</td>
+              <td><span class="badge badge-rose">High</span></td>
+              <td>Merges Dynamics F&amp;O into the unified Dataverse ecosystem under Power Platform.</td>
+              <td><span style="color: var(--emerald); font-weight: 600;">High:</span> Eliminates legacy LCS overhead; meets Microsoft support mandate.</td>
+            </tr>
+            <tr data-category="System Health">
+              <td><strong>03</strong></td>
+              <td><span class="badge badge-indigo">System Health</span></td>
+              <td><strong>Data Archival (Phase 1 – Standard)</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Core Accounting Tables</span></td>
+              <td>4–6 Wks</td>
+              <td><span class="badge badge-amber">Med–High</span></td>
+              <td>Shrinks active database footprint by safely archiving aged financial records.</td>
+              <td><span style="color: var(--emerald); font-weight: 600;">High:</span> Halts Dataverse storage overage penalty charges ($30–$40/GB/month).</td>
+            </tr>
+            <tr data-category="System Health">
+              <td><strong>04</strong></td>
+              <td><span class="badge badge-indigo">System Health</span></td>
+              <td><strong>Data Archival (Phase 2 – Custom)</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Custom &amp; DMF Staging Data</span></td>
+              <td>8–12 Wks</td>
+              <td><span class="badge badge-rose">High</span></td>
+              <td>Archives bespoke company tables and cleans temporary DMF staging artifacts.</td>
+              <td><span style="color: var(--emerald); font-weight: 600;">High:</span> Deepens storage cost avoidance; maximizes query performance &amp; speed.</td>
+            </tr>
+            <tr data-category="Process Efficiency">
+              <td><strong>05</strong></td>
+              <td><span class="badge badge-cyan">Process Efficiency</span></td>
+              <td><strong>Host-to-host Bank Integration (JP Morgan)</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Direct ISO20022 STP</span></td>
+              <td>10–14 Wks</td>
+              <td><span class="badge badge-rose">High</span></td>
+              <td>Straight-through processing for global payments &amp; automated e-statement reconciliation.</td>
+              <td><span style="color: var(--emerald); font-weight: 600;">High:</span> Lowers bank fees, removes manual uploads, saves significant AP hours.</td>
+            </tr>
+            <tr data-category="Process Efficiency">
+              <td><strong>06</strong></td>
+              <td><span class="badge badge-cyan">Process Efficiency</span></td>
+              <td><strong>Forex Report Implementation</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Multi-Currency Exposure Engine</span></td>
+              <td>4–6 Wks</td>
+              <td><span class="badge badge-amber">Med–High</span></td>
+              <td>Real-time visibility into currency exposure, realized &amp; unrealized FX gains/losses.</td>
+              <td><span style="color: var(--cyan); font-weight: 600;">Medium:</span> Eliminates multi-day Excel reconciliations, protects trading margins.</td>
+            </tr>
+            <tr data-category="Process Efficiency">
+              <td><strong>07</strong></td>
+              <td><span class="badge badge-cyan">Process Efficiency</span></td>
+              <td><strong>Dispute Tracker &amp; Framework Automation</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Automated Dispute Resolution</span></td>
+              <td>6–8 Wks</td>
+              <td><span class="badge badge-amber">Medium</span></td>
+              <td>Accelerates resolution of vendor &amp; customer billing discrepancies via smart routing.</td>
+              <td><span style="color: var(--cyan); font-weight: 600;">Medium:</span> Prevents delayed receivables and avoids late-payment vendor penalties.</td>
+            </tr>
+            <tr data-category="New Development or Automation">
+              <td><strong>08</strong></td>
+              <td><span class="badge badge-emerald">New Dev / Auto</span></td>
+              <td><strong>Invoice Capture (SG&amp;A Invoices)</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Microsoft AI Builder &amp; OCR</span></td>
+              <td>12–16 Wks</td>
+              <td><span class="badge badge-rose">High</span></td>
+              <td>Touchless AP entry using AI to read, extract, and match supplier PDF invoices.</td>
+              <td><span style="color: var(--emerald); font-weight: 600;">High:</span> Direct AP FTE headcount efficiency; ends paper entry bottlenecks.</td>
+            </tr>
+            <tr data-category="New Development or Automation">
+              <td><strong>09</strong></td>
+              <td><span class="badge badge-emerald">New Dev / Auto</span></td>
+              <td><strong>TBO Pay Related Development</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Payment Gateway API Integration</span></td>
+              <td>10–14 Wks</td>
+              <td><span class="badge badge-rose">High</span></td>
+              <td>Seamless API checkout integrations for fast booking and instant GL settlement.</td>
+              <td><span style="color: var(--emerald); font-weight: 600;">High:</span> Reduces checkout friction and prevents revenue leakage across gateways.</td>
+            </tr>
+            <tr data-category="New Development or Automation">
+              <td><strong>10</strong></td>
+              <td><span class="badge badge-emerald">New Dev / Auto</span></td>
+              <td><strong>Vendor Payment Proposal Automation</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Zero-Touch Payment Scheduling</span></td>
+              <td>6–8 Wks</td>
+              <td><span class="badge badge-amber">Medium</span></td>
+              <td>Automated payment run algorithms triggered by due dates and cash positions.</td>
+              <td><span style="color: var(--cyan); font-weight: 600;">Medium:</span> Captures 100% of vendor early-payment discounts and cuts AP cycle time.</td>
+            </tr>
+            <tr data-category="New Development or Automation">
+              <td><strong>11</strong></td>
+              <td><span class="badge badge-emerald">New Dev / Auto</span></td>
+              <td><strong>Bank Master CSV Implementation</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Bulk Master Data Onboarding</span></td>
+              <td>3–4 Wks</td>
+              <td><span class="badge badge-emerald">Low–Med</span></td>
+              <td>Standardizes agency, supplier, and airline bank details onboarding via bulk CSV.</td>
+              <td><span style="color: var(--cyan); font-weight: 600;">Medium:</span> Drastically cuts Master Data MDM overhead; prevents misdirected funds.</td>
+            </tr>
+            <tr data-category="Risk & Control">
+              <td><strong>12</strong></td>
+              <td><span class="badge badge-rose">Risk &amp; Control</span></td>
+              <td><strong>Pipeline Creation (CI/CD)</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Azure DevOps Automated Deploy</span></td>
+              <td>4–6 Wks</td>
+              <td><span class="badge badge-rose">High</span></td>
+              <td>Automates testing, approval gates, and zero-downtime releases via Azure DevOps.</td>
+              <td><span style="color: var(--emerald); font-weight: 600;">High:</span> Prevents production downtime, crashes, and costly rollback interventions.</td>
+            </tr>
+            <tr data-category="Risk & Control">
+              <td><strong>13</strong></td>
+              <td><span class="badge badge-rose">Risk &amp; Control</span></td>
+              <td><strong>Roles Validation (Trial Balance)</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Segregation of Duties (SoD)</span></td>
+              <td>3–4 Wks</td>
+              <td><span class="badge badge-emerald">Low–Med</span></td>
+              <td>Enforces View-Only reporting security and strict SoD across financial ledgers.</td>
+              <td><span style="color: var(--cyan); font-weight: 600;">Medium:</span> Mitigates financial fraud risks; ensures strict statutory and SOX compliance.</td>
+            </tr>
+            <tr data-category="Risk & Control">
+              <td><strong>14</strong></td>
+              <td><span class="badge badge-rose">Risk &amp; Control</span></td>
+              <td><strong>Currency Allocation Restrictions</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Mismatched Currency Blockers</span></td>
+              <td>4–6 Wks</td>
+              <td><span class="badge badge-amber">Medium</span></td>
+              <td>System blocks preventing settlement of mismatched currencies without FX rates.</td>
+              <td><span style="color: var(--cyan); font-weight: 600;">Low–Med:</span> Eliminates developer emergency data-fixes and complex audit restatements.</td>
+            </tr>
+            <tr data-category="Risk & Control">
+              <td><strong>15</strong></td>
+              <td><span class="badge badge-rose">Risk &amp; Control</span></td>
+              <td><strong>Allocation Reversal &amp; Exception Handling</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Fault-Tolerant Batch Jobs</span></td>
+              <td>8–10 Wks</td>
+              <td><span class="badge badge-amber">Med–High</span></td>
+              <td>Automates payment un-settlement logic; isolates error rows in bulk processing.</td>
+              <td><span style="color: var(--cyan); font-weight: 600;">Medium:</span> Prevents entire batch crashes; cuts developer support tickets by 80%.</td>
+            </tr>
+            <tr data-category="Risk & Control">
+              <td><strong>16</strong></td>
+              <td><span class="badge badge-rose">Risk &amp; Control</span></td>
+              <td><strong>Activity &amp; Master Data Validation</strong><br><span style="font-size: 0.72rem; color: var(--text-dim);">Automated GL Integrity Scripts</span></td>
+              <td>2–3 Wks</td>
+              <td><span class="badge badge-emerald">Low</span></td>
+              <td>Automated audit scripts verifying GL accounts and vendor records integrity.</td>
+              <td><span style="color: var(--cyan); font-weight: 600;">Medium:</span> Avoids audit penalties and ensures downstream reporting numbers match 100%.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: Multi-Wave Roadmap & Phased Gantt -->
+    <section class="slide" id="slide-10">
+      <div class="slide-meta">
+        <span class="slide-tag">Timeline &bull; 3 Strategic Waves</span>
+        <span class="badge badge-indigo">Execution Phasing (Q1 – Q4)</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Phased Execution Roadmap &amp; Milestones</h1>
+        <p class="subtitle">Strategically sequenced to deliver immediate quick wins and cloud cost reductions, followed by deep platform transformation.</p>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Wave 1 -->
+        <div class="wave-block" style="border-left: 5px solid var(--emerald);">
+          <div class="wave-info">
+            <span class="badge badge-emerald" style="margin-bottom: 6px;">Wave 01 &bull; Months 1–3</span>
+            <h3>Quick Wins &amp; Cost Cut</h3>
+            <p>Immediate cloud expenditure reduction, safety rails &amp; audit hygiene.</p>
+          </div>
+          <div class="wave-items-list">
+            <div class="wave-chip effort-high" onclick="openModal(1)"><strong>CHE &rarr; UDE Dev Migration</strong> (Stop VM Costs)</div>
+            <div class="wave-chip effort-high" onclick="openModal(12)"><strong>Azure DevOps CI/CD Pipelines</strong> (Deploy Safety)</div>
+            <div class="wave-chip effort-med" onclick="openModal(3)"><strong>Data Archival Phase 1</strong> (Standard F&amp;O Storage)</div>
+            <div class="wave-chip effort-low" onclick="openModal(13)"><strong>SoD Roles Trial Balance</strong> (View-Only Audit)</div>
+            <div class="wave-chip effort-low" onclick="openModal(11)"><strong>Bank Master Bulk CSV</strong> (Clean MDM)</div>
+            <div class="wave-chip effort-low" onclick="openModal(16)"><strong>GL &amp; Master Audit Scripts</strong> (Quick Win)</div>
+          </div>
+        </div>
+
+        <!-- Wave 2 -->
+        <div class="wave-block" style="border-left: 5px solid var(--cyan);">
+          <div class="wave-info">
+            <span class="badge badge-cyan" style="margin-bottom: 6px;">Wave 02 &bull; Months 4–6</span>
+            <h3>Architecture &amp; Core Flow</h3>
+            <p>Mandatory Microsoft migration, currency intelligence &amp; custom data purge.</p>
+          </div>
+          <div class="wave-items-list">
+            <div class="wave-chip effort-high" onclick="openModal(2)"><strong>LCS &rarr; PPAC Movement</strong> (Microsoft Mandate)</div>
+            <div class="wave-chip effort-high" onclick="openModal(4)"><strong>Data Archival Phase 2</strong> (Custom &amp; DMF Tables)</div>
+            <div class="wave-chip effort-med" onclick="openModal(6)"><strong>Forex Real-Time Report</strong> (FX Gain/Loss Engine)</div>
+            <div class="wave-chip effort-med" onclick="openModal(7)"><strong>Dispute Tracker Framework</strong> (Cash Recovery)</div>
+            <div class="wave-chip effort-med" onclick="openModal(10)"><strong>Vendor Payment Proposals</strong> (Smart Scheduling)</div>
+            <div class="wave-chip effort-med" onclick="openModal(14)"><strong>Currency Allocation Blocks</strong> (Ledger Guardrails)</div>
+          </div>
+        </div>
+
+        <!-- Wave 3 -->
+        <div class="wave-block" style="border-left: 5px solid var(--indigo);">
+          <div class="wave-info">
+            <span class="badge badge-indigo" style="margin-bottom: 6px;">Wave 03 &bull; Months 7–10</span>
+            <h3>Next-Gen Scale &amp; AI</h3>
+            <p>Direct banking STP, payment gateway checkouts &amp; cognitive AI invoice entry.</p>
+          </div>
+          <div class="wave-items-list">
+            <div class="wave-chip effort-high" onclick="openModal(5)"><strong>JP Morgan Host-to-Host (H2H)</strong> (Direct Bank STP)</div>
+            <div class="wave-chip effort-high" onclick="openModal(8)"><strong>Invoice Capture (AI OCR)</strong> (Touchless AP)</div>
+            <div class="wave-chip effort-high" onclick="openModal(9)"><strong>TBO Pay Gateway Integration</strong> (Checkout APIs)</div>
+            <div class="wave-chip effort-med" onclick="openModal(15)"><strong>Allocation Reversal &amp; Batch Resiliency</strong> (Zero-Crash Batches)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card highlight" style="margin-top: 18px; padding: 14px 20px;">
+        <div style="font-size: 0.85rem; color: #FFF; display: flex; align-items: center; justify-content: space-between;">
+          <span><strong>Risk Mitigation Governance:</strong> No high-risk external banking or payment integration is launched until CI/CD pipelines, allocation guardrails, and rollback frameworks are fully active.</span>
+          <span class="badge badge-emerald">Disciplined Phasing</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: Quantified Business Value & Cost Savings -->
+    <section class="slide" id="slide-11">
+      <div class="slide-meta">
+        <span class="slide-tag">Business Case &bull; Hard Dollar ROI</span>
+        <span class="badge badge-emerald">Executive Financial Impact</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Quantified Enterprise Value &amp; ROI Scorecard</h1>
+        <p class="subtitle">Translating technical ERP milestones into hard currency savings, labor hours recovered, and audit de-risking.</p>
+      </div>
+
+      <div class="grid-4" style="margin-top: 20px;">
+        <div class="glass-card emerald-border">
+          <div style="font-size: 0.72rem; color: var(--emerald); text-transform: uppercase; font-weight: 700;">Infrastructure Savings</div>
+          <div class="stat-number" style="color: var(--emerald); margin: 6px 0;">$30–$40</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">
+            Avoided per GB/month in Microsoft Dataverse overage penalties through 2-Phase Archival.
+          </div>
+        </div>
+
+        <div class="glass-card cyan-border">
+          <div style="font-size: 0.72rem; color: var(--cyan); text-transform: uppercase; font-weight: 700;">Cloud Compute Cut</div>
+          <div class="stat-number" style="color: var(--cyan); margin: 6px 0;">100%</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">
+            Elimination of hourly cloud compute costs for developer VMs via UDE local environment migration.
+          </div>
+        </div>
+
+        <div class="glass-card indigo-border">
+          <div style="font-size: 0.72rem; color: var(--indigo); text-transform: uppercase; font-weight: 700;">AP Labor Reallocated</div>
+          <div class="stat-number" style="color: var(--indigo); margin: 6px 0;">200+ Hrs</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">
+            Saved monthly through AI OCR Invoice Capture, JP Morgan H2H, and auto payment runs.
+          </div>
+        </div>
+
+        <div class="glass-card rose-border">
+          <div style="font-size: 0.72rem; color: var(--rose); text-transform: uppercase; font-weight: 700;">Audit &amp; Downtime Risk</div>
+          <div class="stat-number" style="color: var(--rose); margin: 6px 0;">Zero</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">
+            Tolerance for SoD violations, currency mismatch bugs, or unversioned manual code releases.
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-World Cloud FinOps Showcase (From Azure Saving Audit) -->
+      <div class="glass-card highlight" style="margin-top: 22px; border-color: rgba(16, 185, 129, 0.45); background: linear-gradient(165deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.95));">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px; margin-bottom: 16px;">
+          <div>
+            <div class="badge badge-emerald" style="margin-bottom: 6px;">Proven FinOps Track Record &bull; Hard-Dollar Cloud Savings</div>
+            <h3 style="font-size: 1.35rem; color: #FFF; font-weight: 800;">₹55–65 Lacs / Year Realized &amp; Pipeline Cloud Cost Elimination</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
+              Direct compute and workload optimizations engineered by this position—slashing Azure Synapse run-rate by >50% and decommissioning idle running VMs.
+            </p>
+          </div>
+          <div class="badge badge-cyan" style="font-size: 0.82rem; padding: 7px 14px;">100% Zero ERP Operational Disruption</div>
+        </div>
+
+        <div class="grid-4" style="margin-top: 10px; gap: 14px;">
+          <!-- Metric 1 -->
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 14px; border-left: 3px solid var(--rose);">
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Previous Synapse Spend</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: #FFF; font-family: var(--font-mono); margin: 4px 0;">₹7.05L<span style="font-size: 0.8rem; color: var(--text-muted);">/mo</span></div>
+            <div style="font-size: 0.75rem; color: var(--text-dim); line-height: 1.35;">
+              Historical 12-month spend was ₹9.1M (₹91 Lacs) cumulative prior to optimization.
+            </div>
+          </div>
+
+          <!-- Metric 2 -->
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 14px; border-left: 3px solid var(--amber);">
+            <div style="font-size: 0.7rem; color: var(--cyan); text-transform: uppercase; font-weight: 700;">Phase 1: Spark Tuning</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--cyan); font-family: var(--font-mono); margin: 4px 0;">₹4.5–5.0L<span style="font-size: 0.8rem; color: var(--text-muted);">/mo</span></div>
+            <div style="font-size: 0.75rem; color: #CBD5E1; line-height: 1.35;">
+              Spark compute matched to workload; delivered ~₹10K/day savings (Sept cut to ₹6L).
+            </div>
+          </div>
+
+          <!-- Metric 3 -->
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 14px; border-left: 3px solid var(--emerald);">
+            <div style="font-size: 0.7rem; color: var(--emerald); text-transform: uppercase; font-weight: 700;">Phase 2: Target Run Rate</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--emerald); font-family: var(--font-mono); margin: 4px 0;">₹3.0–3.5L<span style="font-size: 0.8rem; color: var(--text-muted);">/mo</span></div>
+            <div style="font-size: 0.75rem; color: #CBD5E1; line-height: 1.35;">
+              Active in-progress optimization saving an extra ₹1.0–1.5L/mo (Net annual: <strong>₹45–55L/yr</strong>).
+            </div>
+          </div>
+
+          <!-- Metric 4 -->
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 14px; border-left: 3px solid var(--indigo);">
+            <div style="font-size: 0.7rem; color: #818CF8; text-transform: uppercase; font-weight: 700;">Idle VMs Decommissioned</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: #818CF8; font-family: var(--font-mono); margin: 4px 0;">₹10.0L<span style="font-size: 0.8rem; color: var(--text-muted);">/yr</span></div>
+            <div style="font-size: 0.75rem; color: #CBD5E1; line-height: 1.35;">
+              Audited &amp; halted continuously running unutilized VMs, cutting recurring charges.
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 14px; padding: 10px 14px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div style="font-size: 0.82rem; color: #E2E8F0;">
+            <strong style="color: var(--emerald);">Combined Annual Cloud Bottom-Line Benefit:</strong> ₹45–55 Lacs (Synapse) + ₹10 Lacs (VMs) = <strong style="color: #FFF; font-size: 0.95rem;">₹55.0 to ₹65.0 Lacs / Year</strong> direct recurring EBITDA contribution!
+          </div>
+          <span class="badge badge-emerald">Verified FinOps Output</span>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 20px;">
+        <div class="glass-card">
+          <h4 style="font-size: 1rem; color: #FFF; margin-bottom: 8px;">Tangible Financial Gains</h4>
+          <ul style="font-size: 0.82rem; color: #CBD5E1; display: flex; flex-direction: column; gap: 8px; list-style: none;">
+            <li>&bull; <strong>Early Settlement Discounts:</strong> Automated vendor proposals capture supplier 1-2% early payment rebates.</li>
+            <li>&bull; <strong>Reduced Banking Fees:</strong> JP Morgan H2H bulk transmission avoids retail portal per-transaction charges.</li>
+            <li>&bull; <strong>Protected Trading Margins:</strong> Real-time Forex engine alerts treasury to currency swings before margins erode.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card">
+          <h4 style="font-size: 1rem; color: #FFF; margin-bottom: 8px;">Intangible Enterprise Strategic Value</h4>
+          <ul style="font-size: 0.82rem; color: #CBD5E1; display: flex; flex-direction: column; gap: 8px; list-style: none;">
+            <li>&bull; <strong>Scalability:</strong> Systems handle 10x booking volume without requiring proportional AP headcount growth.</li>
+            <li>&bull; <strong>Audit Readiness:</strong> Complete traceability from transaction checkout to GL journal entries.</li>
+            <li>&bull; <strong>Developer Morale &amp; Speed:</strong> Local VS 2022 debugging and CI/CD pipelines enable rapid release cycles.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: Role Evolution & Leadership Trajectory -->
+    <section class="slide" id="slide-12">
+      <div class="slide-meta">
+        <span class="slide-tag">Career &amp; Departmental Trajectory &bull; Organizational Architecture</span>
+        <span class="badge badge-indigo">Autonomous Department Architecture</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Department Architecture &amp; Leadership Trajectory</h1>
+        <p class="subtitle">Establishing and leading the Independent ERP Department: Evolving from Senior Manager to Director.</p>
+      </div>
+
+      <div class="grid-3" style="margin-top: 24px;">
+        <!-- Stage 1 -->
+        <div class="glass-card">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Current State &bull; Months 0–6</div>
+          <h3 style="font-size: 1.15rem; color: #FFF; margin: 6px 0;">Technical Lead / Analytics Manager</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Hands-on problem solver &amp; foundational architect.</p>
+          <ul style="font-size: 0.78rem; color: #CBD5E1; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li>&bull; Writes complex SQL, PySpark &amp; Synapse pipelines</li>
+            <li>&bull; Resolves stuck D365 staging records &amp; posting locks</li>
+            <li>&bull; Delivers 100+ stakeholder Power BI reports &amp; models</li>
+            <li>&bull; Executes initial Spark tuning &amp; halts unutilized VMs</li>
+          </ul>
+          <div style="margin-top: 14px;" class="badge badge-indigo">Execution Foundation</div>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="glass-card highlight">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--cyan); font-weight: 700;">Target Elevation &bull; Months 6–18</div>
+          <h3 style="font-size: 1.15rem; color: #FFF; margin: 6px 0;">Senior Manager &ndash; ERP &amp; Enterprise Data</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Autonomous Department Lead &amp; Systems Architect.</p>
+          <ul style="font-size: 0.78rem; color: #CBD5E1; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li>&bull; Formalizes ERP as an independent department</li>
+            <li>&bull; Leads 3 sub-functions: F&amp;O Compliance, Data Eng, BI</li>
+            <li>&bull; Directs JP Morgan H2H, AI Invoicing &amp; PPAC migration</li>
+            <li>&bull; Locks in ₹55&ndash;65L annual cloud FinOps savings</li>
+          </ul>
+          <div style="margin-top: 14px;" class="badge badge-cyan">Recommended Elevation</div>
+        </div>
+
+        <!-- Stage 3 -->
+        <div class="glass-card">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--emerald); font-weight: 700;">Long-Term Vision &bull; Months 18–36</div>
+          <h3 style="font-size: 1.15rem; color: #FFF; margin: 6px 0;">Director &ndash; Enterprise Data &amp; Systems</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Enterprise strategist &amp; C-Suite transformation partner.</p>
+          <ul style="font-size: 0.78rem; color: #CBD5E1; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li>&bull; Shapes group-wide ERP, Microsoft Fabric &amp; AI roadmap</li>
+            <li>&bull; Strategic advisor to CFO, CIO &amp; Executive Board</li>
+            <li>&bull; Scales enterprise data architectures across business units</li>
+            <li>&bull; Directs enterprise risk, regulatory governance &amp; FinOps</li>
+          </ul>
+          <div style="margin-top: 14px;" class="badge badge-emerald">Strategic Leadership</div>
+        </div>
+      </div>
+
+      <!-- Organizational Chart for the Independent ERP Department -->
+      <div class="glass-card" style="margin-top: 20px; background: rgba(99, 102, 241, 0.05); border-color: rgba(99, 102, 241, 0.25);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--cyan); text-transform: uppercase;">Independent ERP Department Structure (Reporting directly to CFO / CIO)</span>
+          <span class="badge badge-indigo">Autonomous Governance</span>
+        </div>
+        <div class="grid-3" style="gap: 12px; margin-top: 8px;">
+          <div style="background: rgba(15, 23, 42, 0.6); padding: 10px 14px; border-radius: 8px; border-left: 3px solid var(--emerald);">
+            <div style="font-size: 0.82rem; font-weight: 700; color: #FFF;">Branch 1: ERP Finance &amp; Compliance</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 4px;">D365 F&amp;O Core, GL/AP/AR, Tax/GST/TDS, E-Invoicing, Bank H2H &amp; Audit Defense</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.6); padding: 10px 14px; border-radius: 8px; border-left: 3px solid var(--cyan);">
+            <div style="font-size: 0.82rem; font-weight: 700; color: #FFF;">Branch 2: Data Engineering &amp; Lakehouse</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 4px;">Azure Synapse, ADLS Gen2, Spark Pools, 100M+ Records, CI/CD &amp; FinOps Governance</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.6); padding: 10px 14px; border-radius: 8px; border-left: 3px solid var(--amber);">
+            <div style="font-size: 0.82rem; font-weight: 700; color: #FFF;">Branch 3: Analytics &amp; Executive BI</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 4px;">Power BI Semantic Models, Financial Reconciliations, Executive P&amp;L Cockpits</div>
+          </div>
+        </div>
+        <div style="font-size: 0.8rem; color: #CBD5E1; margin-top: 10px; line-height: 1.5;">
+          <strong>Why It Must Stand Independent:</strong> ERP sits at the high-stakes junction of financial statutory compliance and massive big data engineering. Separating it from generic IT ticket queues and general BI reporting guarantees speed, regulatory compliance, and uncompromised financial truth.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13: Proposed Operating Model & Scaling Strategy -->
+    <section class="slide" id="slide-13">
+      <div class="slide-meta">
+        <span class="slide-tag">Organizational Capability &bull; Governance Model</span>
+        <span class="badge badge-emerald">Sustainable Operating Model</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Institutionalizing Capability: Building Systems, Not Bottlenecks</h1>
+        <p class="subtitle">A mature leadership role transitions the company from individual operational dependency to automated systems, SOPs, and empowered teams.</p>
+      </div>
+
+      <div class="grid-3" style="margin-top: 24px;">
+        <div class="glass-card">
+          <div class="badge badge-indigo" style="margin-bottom: 10px;">1. Standardized Documentation</div>
+          <h4 style="font-size: 1.05rem; color: #FFF; margin-bottom: 6px;">Standard Operating Procedures (SOPs)</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+            Documenting all D365 staging pipelines, Synapse external tables, and reconciliation queries in centralized wikis so junior engineers can resolve routine alerts independently.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <div class="badge badge-cyan" style="margin-bottom: 10px;">2. Automated Self-Healing</div>
+          <h4 style="font-size: 1.05rem; color: #FFF; margin-bottom: 6px;">Automated Audits &amp; Alerts</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+            Implementing Task 15 (Batch Exception Handling) and Task 16 (Master Data Validation) so systems alert the team before users notice issues, eliminating manual monitoring.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <div class="badge badge-emerald" style="margin-bottom: 10px;">3. Mentorship &amp; Delegation</div>
+          <h4 style="font-size: 1.05rem; color: #FFF; margin-bottom: 6px;">Cross-Skilling the Team</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+            Mentoring business analysts to understand ERP table structures and training junior developers on CI/CD pipelines, freeing senior bandwidth for high-leverage architectural strategy.
+          </p>
+        </div>
+      </div>
+
+      <div class="glass-card highlight" style="margin-top: 20px;">
+        <h4 style="font-size: 1rem; color: #FFF; margin-bottom: 6px;">The Strategic Leadership Credo:</h4>
+        <p style="font-size: 0.9rem; color: #CBD5E1; font-style: italic;">
+          &ldquo;A truly great leadership function does not maintain dependency. It engineers automated systems, establishes transparent controls, and upskills team members so the enterprise operates predictably, securely, and scalably.&rdquo;
+        </p>
+      </div>
+    </section>
+
+    <!-- SLIDE 14: Conclusion & Action Plan -->
+    <section class="slide" id="slide-14">
+      <div class="slide-meta">
+        <span class="slide-tag">Summary &bull; Strategic Recommendations</span>
+        <span class="badge badge-indigo">Action Plan</span>
+      </div>
+      <div class="slide-title-block">
+        <h1>Summary &amp; Implementation Next Steps</h1>
+        <p class="subtitle">Formalizing the roadmap, securing cross-functional alignment, and elevating the ERP &amp; Analytics function.</p>
+      </div>
+
+      <!-- Crowning Value Proof Point: Direct Cloud Savings Delivered -->
+      <div class="glass-card highlight" style="margin-top: 20px; border-color: rgba(99, 102, 241, 0.5); background: linear-gradient(165deg, rgba(99, 102, 241, 0.12), rgba(15, 23, 42, 0.95)); padding: 22px 26px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+          <div>
+            <span class="badge badge-indigo">Crowning Proof Point &bull; Realized Financial Leadership</span>
+            <h3 style="font-size: 1.3rem; color: #FFF; font-weight: 800; margin-top: 6px;">
+              Proven Track Record: ₹55–65 Lacs Annual Cloud Cost Reduction Delivered &amp; In-Flight
+            </h3>
+          </div>
+          <div class="badge badge-emerald" style="font-size: 0.85rem; padding: 8px 16px;">Direct P&amp;L Impact</div>
+        </div>
+        <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6;">
+          This roadmap is backed by concrete execution. Over the past 12 months, Azure Synapse ran at <strong>₹7.05 Lacs/month (~₹91 Lacs cumulative)</strong>. By auditing workload patterns, tuning Spark compute, and executing ongoing pipeline optimizations, the run-rate is falling to <strong>₹3.0–3.5 Lacs/month</strong>—locking in <strong>₹45–55 Lacs in annual recurring savings</strong>. In addition, by auditing and halting continuously running unutilized Azure VMs, an additional <strong>approx. ₹10 Lacs in annual recurring compute costs</strong> has been eliminated.
+        </p>
+        <div style="margin-top: 12px; font-size: 0.82rem; color: var(--cyan); font-weight: 600; display: flex; align-items: center; gap: 6px;">
+          <span>⚡ Net Result: ₹55–65 Lacs annual recurring cash savings generated with 100% zero operational disruption to ERP processes or reporting SLAs.</span>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 20px;">
+        <div class="glass-card highlight">
+          <h3 style="font-size: 1.15rem; color: #FFF; margin-bottom: 12px;">What This Roadmap Delivers</h3>
+          <ul style="font-size: 0.85rem; color: #E2E8F0; display: flex; flex-direction: column; gap: 10px; list-style: none;">
+            <li>&bull; <strong>Proven Bottom-Line FinOps:</strong> ₹55–65 Lacs/year recurring savings delivered across Synapse tuning and VM shutdowns, plus upcoming Dataverse archival.</li>
+            <li>&bull; <strong>Next-Gen Financial Infrastructure:</strong> Straight-through JP Morgan banking, real-time FX tracking, and AI invoice reading.</li>
+            <li>&bull; <strong>Zero Compliance &amp; Audit Exposure:</strong> Bulletproof SoD permissions, currency safeguards, and CI/CD releases.</li>
+            <li>&bull; <strong>Scalability:</strong> Supporting 10x business transaction growth with automated digital efficiency.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card">
+          <h3 style="font-size: 1.15rem; color: var(--cyan); margin-bottom: 12px;">Immediate Implementation Steps</h3>
+          <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.85rem; color: #CBD5E1;">
+            <div style="display: flex; gap: 10px;">
+              <span class="badge badge-indigo">Step 1</span>
+              <span><strong>Formalize ERP as an Independent Department:</strong> Officially establish ERP as an autonomous department spanning F&amp;O, Statutory Compliance, Data Engineering, and BI Reporting &mdash; independent from generic IT or BI backlogs.</span>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <span class="badge badge-cyan">Step 2</span>
+              <span><strong>Cross-Functional Kickoff:</strong> Joint alignment between Finance, Treasury, and ERP engineering for JP Morgan H2H.</span>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <span class="badge badge-emerald">Step 3</span>
+              <span><strong>Role Architecture Formalization:</strong> Transition the position to <strong>Senior Manager – ERP &amp; Enterprise Analytics</strong> to match enterprise scope.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="margin-top: 24px; text-align: center; padding: 28px;">
+        <h2 style="font-size: 1.4rem; color: #FFF; margin-bottom: 6px;">Ready to Execute</h2>
+        <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 16px;">
+          The roadmap is structured, the technical architecture is validated, and the enterprise ROI is quantified.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px;">
+          <button class="btn btn-primary" onclick="goToSlide(1)">Review From Beginning</button>
+          <button class="btn btn-emerald" onclick="window.print()">Export Complete Slide Deck (PDF)</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Modal for Task Detail -->
+  <div class="modal-overlay" id="taskModal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const totalSlides = 14;
+    let currentSlide = 1;
+
+    const taskDetails = {
+      1: {
+        title: "Replacing CHE with UDE (Unified Dev Environments)",
+        category: "System Health",
+        duration: "4–6 Weeks",
+        effort: "High",
+        impact: "Modernizes developer workflow using local VS 2022; moves development from expensive rented cloud VMs to local hardware.",
+        roi: "High: Eliminates 100% of monthly Azure VM compute charges for all active developers.",
+        businessContext: "Instead of paying hourly cloud rent for remote developer laptops, developers code directly on their local machines, immediately halting recurring Azure compute billing.",
+        risk: "Continued bleeding of thousands of dollars monthly in idle and active cloud compute fees.",
+        tech: "Requires configuring local developer Docker containers, Dataverse developer instances, Power Platform Admin Center integration, and local VS 2022 extensions.",
+        stakeholders: "Developer Fleet, Cloud Infrastructure, FinOps",
+        kpi: "100% Azure Dev VM Invoices Eliminated"
+      },
+      2: {
+        title: "Power Platform Movement (LCS to PPAC)",
+        category: "System Health",
+        duration: "8–12 Weeks",
+        effort: "High",
+        impact: "Mandatory Microsoft architectural shift merging F&O into the unified Dataverse ecosystem.",
+        roi: "High: Consolidates administrative overhead and avoids legacy LCS support deprecation costs.",
+        businessContext: "Microsoft is sunsetting the legacy LCS portal. We are moving our entire ERP control center to PPAC to maintain full enterprise support.",
+        risk: "Risk of running on an unsupported legacy platform as Microsoft sunsets LCS portal access.",
+        tech: "Dual-write alignment, virtual entities in Dataverse, Power Platform admin center lifecycle management, and security role synchronization.",
+        stakeholders: "Enterprise IT, Microsoft Partner Support, ERP Architecture",
+        kpi: "Zero Downtime on Microsoft Support Mandate"
+      },
+      3: {
+        title: "Data Archival (Phase 1 – Standard F&O)",
+        category: "System Health",
+        duration: "4–6 Weeks",
+        effort: "Med–High",
+        impact: "Shrinks database footprint by archiving core historical accounting transactions.",
+        roi: "High: Prevents massive Dataverse storage overage penalty fees ($30–$40 per additional GB/month).",
+        businessContext: "Moving multi-year-old financial transaction records into low-cost cold storage so live ERP queries remain blazing fast and storage invoices drop drastically.",
+        risk: "Exponentially ballooning storage invoices as transactional volume grows month-over-month.",
+        tech: "Standard Microsoft archival jobs, General Journal ledger transaction purge, and cold storage verification.",
+        stakeholders: "Finance Leadership, Cloud Cost Governance, DBAs",
+        kpi: "Avoidance of $30–$40/GB/Mo Penalties"
+      },
+      4: {
+        title: "Data Archival (Phase 2 – Custom & DMF Staging)",
+        category: "System Health",
+        duration: "8–12 Weeks",
+        effort: "High",
+        impact: "Archives bespoke custom tables and cleans bloated DMF staging execution data.",
+        roi: "High: Deepens storage cost avoidance, accelerates system upgrades, and maximizes query response speed.",
+        businessContext: "Expanding storage optimization by writing custom rules to clear out bespoke company tables and temporary batch staging files.",
+        risk: "Slow reports, query timeouts, and bloated backup windows caused by gigabytes of dead staging rows.",
+        tech: "Custom X++ archival scripts, Azure Data Lake export pipelines, and automated DMF execution history cleanup.",
+        stakeholders: "ERP Technical Team, Analytics Ops, DBAs",
+        kpi: "40% Faster Query Response on Staging"
+      },
+      5: {
+        title: "Host-to-host Bank Integration (JP Morgan)",
+        category: "Process Efficiency",
+        duration: "10–14 Weeks",
+        effort: "High",
+        impact: "Enables straight-through processing (STP) for global payments and automated e-statement reconciliation.",
+        roi: "High: Reduces bank transaction fees, eliminates manual file uploads, and saves hundreds of AP hours.",
+        businessContext: "Direct server-to-server connection with JP Morgan. Payments execute and bank statements reconcile automatically without anyone manually uploading CSVs.",
+        risk: "Manual payment file tampering risk, delayed vendor payouts, and unreconciled bank floats.",
+        tech: "ISO20022 XML payment files, SFTP/API encrypted handshakes, PGP key encryption, and MT940/CAMT.053 electronic bank statement parsing.",
+        stakeholders: "Global Treasury, AP, JP Morgan Tech Team",
+        kpi: "100% Automated Straight-Through Processing"
+      },
+      6: {
+        title: "Forex Report Implementation",
+        category: "Process Efficiency",
+        duration: "4–6 Weeks",
+        effort: "Med–High",
+        impact: "Provides real-time visibility into currency exposure, accounting vs. transaction currencies, and realized/unrealized gains.",
+        roi: "Medium: Avoids statutory audit penalties and replaces fragile multi-day manual Excel reconciliations.",
+        businessContext: "An automated analytical dashboard calculating exactly how much the company makes or loses across multi-currency operations due to exchange rate swings.",
+        risk: "Inaccurate profitability reporting and unforeseen currency exchange margin erosion.",
+        tech: "Synapse SQL views, currency revaluation logic, daily FX rate feeds, and DAX multi-currency models in Power BI.",
+        stakeholders: "CFO, Group Treasury, External Statutory Auditors",
+        kpi: "Instant Currency Visibility & Margin Protection"
+      },
+      7: {
+        title: "Dispute Tracker & Framework Automation",
+        category: "Process Efficiency",
+        duration: "6–8 Weeks",
+        effort: "Medium",
+        impact: "Accelerates resolution of vendor and customer invoice disputes via automated approval routing.",
+        roi: "Medium: Prevents delayed receivables and avoids late-payment vendor penalties.",
+        businessContext: "An automated internal ticketing workflow inside ERP. Disputed bills route automatically to responsible managers instead of stalling in email chains.",
+        risk: "Uncollected cash trapped in disputed invoices and vendor relationship strain.",
+        tech: "Power Automate approvals, custom D365 dispute workflow tables, and escalation SLA triggers.",
+        stakeholders: "Commercial Ops, Vendor Relations, AR Team",
+        kpi: "50% Faster Dispute Resolution Turnaround"
+      },
+      8: {
+        title: "Invoice Capture (SG&A Invoices via AI)",
+        category: "New Development or Automation",
+        duration: "12–16 Weeks",
+        effort: "High",
+        impact: "Transforms AP via Microsoft AI Builder and OCR integration for touchless invoice entry.",
+        roi: "High: Direct reduction in AP FTE requirements and paper processing costs.",
+        businessContext: "Cognitive AI reads incoming supplier PDF invoices, extracts key fields, and enters them into ERP automatically—zero manual re-keying.",
+        risk: "High administrative overhead, delayed invoice approvals, and manual typing errors.",
+        tech: "AI Builder Document Processing model, Microsoft Invoice Capture solution, 3-way matching rules, and exception queues.",
+        stakeholders: "Accounts Payable Leadership, Shared Services",
+        kpi: "200+ Hours Monthly AP Entry Reallocated"
+      },
+      9: {
+        title: "TBO Pay Related Development",
+        category: "New Development or Automation",
+        duration: "10–14 Weeks",
+        effort: "High",
+        impact: "Seamless API integration with specialized payment gateways for instant customer checkouts.",
+        roi: "High: Reduces checkout transaction friction and prevents revenue leakage across payment rails.",
+        businessContext: "Wiring digital payment processors into ERP so customer checkouts are instant, secure, and automatically recorded in the ledger without delay.",
+        risk: "Cart dropoffs, reconciliation discrepancies between gateway settlements and ERP ledgers.",
+        tech: "RESTful payment gateway webhooks, tokenized card handling, idempotent transaction recording, and automated GL posting.",
+        stakeholders: "Product Engineering, Checkout Ops, Revenue Accounting",
+        kpi: "Zero Revenue Leakage & Sub-Second Postings"
+      },
+      10: {
+        title: "Vendor Payment Proposal Automation",
+        category: "New Development or Automation",
+        duration: "6–8 Weeks",
+        effort: "Medium",
+        impact: "Enables zero-touch payment proposal runs based on due dates, cash flow, and discount terms.",
+        roi: "Medium: Maximizes vendor early-payment cash discounts and cuts AP preparation workload.",
+        businessContext: "Setting up smart rules so ERP automatically drafts the list of bills to pay each week based on cash rules, saving AP from searching thousands of invoices.",
+        risk: "Missed early settlement discounts and accidental late payments incurring interest fees.",
+        tech: "Automated AP payment journal batch jobs, cash discount priority algorithms, and treasury cash pool limits.",
+        stakeholders: "AP Team, Treasury Cash Desk, Vendor Managers",
+        kpi: "100% Capture of 1–2% Early Settlement Discounts"
+      },
+      11: {
+        title: "Bank Master CSV Implementation",
+        category: "New Development or Automation",
+        duration: "3–4 Weeks",
+        effort: "Low–Med",
+        impact: "Standardizes onboarding of agency, supplier, and airline bank details via validated bulk uploads.",
+        roi: "Medium: Reduces Master Data overhead and prevents misdirected payment losses.",
+        businessContext: "A standardized bulk template allowing the company to import thousands of verified vendor bank details in seconds, eliminating typos that cause bounced payments.",
+        risk: "Misrouted wire transfers caused by manual typos and delayed vendor onboarding.",
+        tech: "DMF Data Entity with IBAN/SWIFT regex checksum validation and maker-checker approval workflows.",
+        stakeholders: "Master Data Team, Agency Onboarding, Supplier Support",
+        kpi: "Zero Misrouted Payments & 90% Faster Onboarding"
+      },
+      12: {
+        title: "Pipeline Creation (CI/CD) in Azure DevOps",
+        category: "Risk & Control",
+        duration: "4–6 Weeks",
+        effort: "High",
+        impact: "Ensures all software customizations are tracked, tested, approved, and safely deployed via Azure DevOps.",
+        roi: "High: Prevents catastrophic production downtime and emergency rollbacks from manual deployment errors.",
+        businessContext: "A digital quality-control assembly line that automatically tests code before it touches production, preventing developer mistakes from crashing the ERP.",
+        risk: "Production outages, broken business flows, and lost developer hours during emergency rollbacks.",
+        tech: "YAML multi-stage Azure Pipelines, MSBuild X++ compiler tasks, automated regression testing, and deployment gates.",
+        stakeholders: "ERP Engineering, QA, Release Management",
+        kpi: "Zero Production Deployment Downtime"
+      },
+      13: {
+        title: "Roles Validation (Trial Balance)",
+        category: "Risk & Control",
+        duration: "3–4 Weeks",
+        effort: "Low–Med",
+        impact: "Enforces strict Segregation of Duties (SoD) for financial reporting (View-Only permissions).",
+        roi: "Medium: Mitigates financial fraud risk and guarantees 100% statutory and SOX audit compliance.",
+        businessContext: "Locking vault doors: ensuring staff who only need to review financial reports cannot accidentally or intentionally alter ledger figures.",
+        risk: "Severe audit non-compliance fines and unauthorized ledger adjustments.",
+        tech: "Security duty and privilege customization, F&O security diagnostics, and SoD conflict matrix validation.",
+        stakeholders: "Internal Audit, SOX Compliance, Controllership",
+        kpi: "Zero Statutory Audit Findings on Ledger Roles"
+      },
+      14: {
+        title: "Customer/Vendor Allocation Restrictions",
+        category: "Risk & Control",
+        duration: "4–6 Weeks",
+        effort: "Medium",
+        impact: "Hard system blocks preventing users from settling invoices and payments in mismatched currencies without FX rates.",
+        roi: "Low–Med: Eliminates costly developer data-fixes and complex accounting reconciliations.",
+        businessContext: "Guardrails stopping staff from mistakenly settling a EUR invoice with USD without proper exchange rate calculations that throw accounting out of balance.",
+        risk: "Unbalanced subledgers and emergency manual SQL data-fix interventions.",
+        tech: "Validation event handlers on CustTransOpen and VendTransOpen settlement classes.",
+        stakeholders: "Financial Accounting, Billing Ops, ERP Support",
+        kpi: "100% Prevention of Cross-Currency Discrepancies"
+      },
+      15: {
+        title: "Allocation Reversal & Exception Handling",
+        category: "Risk & Control",
+        duration: "8–10 Weeks",
+        effort: "Med–High",
+        impact: "Automated un-settlement logic and custom error logging for high-volume financial batch jobs.",
+        roi: "Medium: Reduces manual accounting rework and developer troubleshooting hours by 80%.",
+        businessContext: "An 'undo' function for wrong payment applications, plus safety nets so if one payment has an error, the batch skips it and finishes the remaining 9,999 transactions smoothly.",
+        risk: "Overnight batch crashes halting company disbursements and hours spent in manual un-settlement.",
+        tech: "Try-catch row level isolation in bulk settlement batches, transactional savepoints, and automated exception logging tables.",
+        stakeholders: "Core Accounting, ERP Batch Support, Data Ops",
+        kpi: "80% Reduction in Batch Failure Support Tickets"
+      },
+      16: {
+        title: "Activity & GL Master Data Validation",
+        category: "Risk & Control",
+        duration: "2–3 Weeks",
+        effort: "Low",
+        impact: "Ensures General Ledger and master data integrity via automated background audit scripts.",
+        roi: "Medium: Completely avoids statutory audit fines and downstream financial reporting errors.",
+        businessContext: "Automated digital watchdogs continually checking that master financial accounts and vendor lists follow company rules and remain uncorrupted.",
+        risk: "Silent data corruption resulting in inaccurate P&L reports and external auditor restatements.",
+        tech: "Automated nightly SQL validation scripts, anomalous account usage alerts, and Power Automate email digests.",
+        stakeholders: "GL Accounting, Statutory Compliance, Reporting",
+        kpi: "Zero Master Data Corruption & 100% Clean Audit"
+      }
+    };
+
+    function updateSlide() {
+      // Toggle slide visibility
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById(`slide-${i}`);
+        if (slide) {
+          if (i === currentSlide) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        }
+      }
+
+      // Update counter and progress bar
+      document.getElementById('slideCounter').innerText = `Slide ${currentSlide} of ${totalSlides}`;
+      const percentage = (currentSlide / totalSlides) * 100;
+      document.getElementById('progressBar').style.width = `${percentage}%`;
+
+      // Update select dropdown
+      const selectElem = document.getElementById('slideSelect');
+      if (selectElem) {
+        selectElem.value = currentSlide;
+      }
+
+      // Update quick jump pills
+      const jumpChips = document.querySelectorAll('.jump-chip');
+      jumpChips.forEach((chip, idx) => {
+        if (idx + 1 === currentSlide) {
+          chip.classList.add('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      });
+
+      // Update button states
+      document.getElementById('prevBtn').disabled = (currentSlide === 1);
+      document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(slideNum) {
+      if (slideNum >= 1 && slideNum <= totalSlides) {
+        currentSlide = slideNum;
+        updateSlide();
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        if (document.getElementById('taskModal').classList.contains('active')) return;
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        if (document.getElementById('taskModal').classList.contains('active')) return;
+        prevSlide();
+      } else if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Table Filtering
+    function filterTable(category, btnElement) {
+      const rows = document.querySelectorAll('#tasksTable tbody tr');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (btnElement) {
+        btnElement.classList.add('active');
+      }
+
+      rows.forEach(row => {
+        if (category === 'all' || row.getAttribute('data-category') === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal Details
+    function openModal(id) {
+      const data = taskDetails[id];
+      if (!data) return;
+
+      const modalBody = document.getElementById('modalBody');
+      modalBody.innerHTML = `
+        <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--cyan); font-weight: 700; margin-bottom: 6px;">
+          ${data.category} &bull; Deliverable #${id}
+        </div>
+        <h2 style="font-size: 1.35rem; color: #FFF; font-weight: 800; margin-bottom: 12px; line-height: 1.3;">
+          ${data.title}
+        </h2>
+        <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+          <span class="badge badge-indigo">Duration: ${data.duration}</span>
+          <span class="badge badge-rose">Effort: ${data.effort}</span>
+          <span class="badge badge-emerald">ROI Tier: ${data.roi.split(':')[0]}</span>
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: #CBD5E1; text-transform: uppercase; margin-bottom: 4px;">Business Impact:</div>
+          <div style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5;">${data.impact}</div>
+        </div>
+
+        <div style="margin-bottom: 12px; background: rgba(16, 185, 129, 0.08); padding: 12px; border-radius: 8px; border-left: 3px solid var(--emerald);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--emerald); text-transform: uppercase; margin-bottom: 4px;">Cost Saving & ROI:</div>
+          <div style="font-size: 0.88rem; color: #A7F3D0; line-height: 1.5;">${data.roi}</div>
+        </div>
+
+        <div style="margin-bottom: 12px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid var(--indigo);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--indigo); text-transform: uppercase; margin-bottom: 4px;">Executive Business Context:</div>
+          <div style="font-size: 0.85rem; color: #E2E8F0; line-height: 1.5;">${data.businessContext}</div>
+        </div>
+
+        <div style="margin-bottom: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div style="background: rgba(6, 182, 212, 0.06); padding: 10px; border-radius: 6px; border-left: 2px solid var(--cyan);">
+            <div style="font-size: 0.72rem; color: var(--cyan); font-weight: 700; text-transform: uppercase;">Key Stakeholders:</div>
+            <div style="font-size: 0.8rem; color: #CBD5E1; margin-top: 2px;">${data.stakeholders}</div>
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.06); padding: 10px; border-radius: 6px; border-left: 2px solid var(--emerald);">
+            <div style="font-size: 0.72rem; color: var(--emerald); font-weight: 700; text-transform: uppercase;">Primary Success KPI:</div>
+            <div style="font-size: 0.8rem; color: #CBD5E1; margin-top: 2px;">${data.kpi}</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--rose); text-transform: uppercase; margin-bottom: 4px;">Risk If Delayed or Omitted:</div>
+          <div style="font-size: 0.85rem; color: #FDA4AF; line-height: 1.5;">${data.risk}</div>
+        </div>
+
+        <div>
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; margin-bottom: 4px;">Technical Architecture & Enablers:</div>
+          <div style="font-size: 0.82rem; color: #94A3B8; font-family: var(--font-mono); line-height: 1.4;">${data.tech}</div>
+        </div>
+      `;
+
+      document.getElementById('taskModal').classList.add('active');
+    }
+
+    function closeModal(e) {
+      if (!e || e.target.id === 'taskModal' || e.target.classList.contains('modal-close')) {
+        document.getElementById('taskModal').classList.remove('active');
+      }
+    }
+
+    // Initialize
+    updateSlide();
+  </script>
+</body>
+</html>
